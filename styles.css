@@ -85,7 +85,7 @@ section {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.72fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.86fr);
   gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: center;
   min-height: clamp(36rem, 78vh, 45rem);
@@ -291,36 +291,10 @@ section {
   color: #6f645a;
   font-size: 1rem;
 }
-
-.starter {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.5rem;
-  max-width: 42rem;
-  margin-top: 0.75rem;
-}
-.starter .item {
-  border: 1px solid #ddd0c0;
-  border-radius: 0.25rem;
-  background: #fffaf2;
-  padding: 0.75rem;
-  transition: border-color 160ms ease, background-color 160ms ease;
-}
-.starter span {
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.25rem;
+.note a {
   color: #9f4d22;
-}
-.starter strong {
-  display: block;
-  color: #382f29;
-  font-size: 0.94rem;
-  line-height: 1.35;
+  font-weight: 700;
+  text-underline-offset: 0.25rem;
 }
 
 .board {
@@ -629,9 +603,6 @@ section {
   }
   .nav {
     flex-wrap: wrap;
-  }
-  .starter {
-    grid-template-columns: 1fr;
   }
   .board {
     box-shadow: 0.5rem 0.5rem 0 #9b7657;

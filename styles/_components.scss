@@ -159,35 +159,11 @@
   margin-top: t.$space-3;
   color: t.$color-faint;
   font-size: t.$text-small;
-}
 
-.starter {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: t.$space-2;
-  max-width: 42rem;
-  margin-top: t.$space-3;
-
-  .item {
-    border: t.$soft-border;
-    border-radius: t.$radius-soft;
-    background: t.$color-surface;
-    padding: t.$space-3;
-    transition: border-color 160ms ease, background-color 160ms ease;
-  }
-
-  span {
-    @include m.mono-label;
-    display: block;
-    margin-bottom: t.$space-1;
+  a {
     color: t.$color-accent;
-  }
-
-  strong {
-    display: block;
-    color: t.$color-ink;
-    font-size: 0.94rem;
-    line-height: 1.35;
+    font-weight: 700;
+    text-underline-offset: t.$space-1;
   }
 }
 
