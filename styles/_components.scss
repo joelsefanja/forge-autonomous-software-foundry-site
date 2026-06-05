@@ -184,10 +184,6 @@
     padding: t.$space-3;
     transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
 
-    &:nth-child(even) {
-      transform: translateX(t.$step-offset);
-    }
-
     &:hover {
       border-color: t.$color-accent;
       background: t.$color-white;

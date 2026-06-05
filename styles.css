@@ -318,9 +318,6 @@ h3 {
   padding: 0.75rem;
   transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
 }
-.flow .step:nth-child(even) {
-  transform: translateX(0.5rem);
-}
 .flow .step:hover {
   border-color: #ff5c00;
   background: #ffffff;
@@ -579,9 +576,6 @@ h3 {
   .board {
     box-shadow: 0.5rem 0.5rem 0 #211d18;
   }
-  .flow .step:nth-child(even) {
-    transform: none;
-  }
   .process .row {
     grid-template-columns: 4.5rem 1fr;
   }
@@ -617,16 +611,6 @@ h3 {
   .actions .note {
     flex-basis: 100%;
     margin-top: 0.25rem;
-  }
-  .proofline {
-    width: 100%;
-  }
-  .proofline span {
-    flex: 1 1 50%;
-    text-align: center;
-  }
-  .proofline span:nth-child(2n) {
-    border-right: 0;
   }
   .board .head {
     flex-direction: column;
