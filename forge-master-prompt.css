@@ -457,6 +457,9 @@ h3 {
   transform: translateY(-0.125rem);
   background: #ffffff;
 }
+.deliverables .item:last-child:nth-child(3n+1) {
+  grid-column: 1/-1;
+}
 .deliverables .num {
   display: block;
   margin-bottom: 2.625rem;

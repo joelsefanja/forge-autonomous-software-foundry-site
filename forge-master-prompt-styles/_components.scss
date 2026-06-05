@@ -342,6 +342,10 @@
       transform: translateY(t.$motion-lift);
       background: t.$color-white;
     }
+
+    &:last-child:nth-child(3n + 1) {
+      grid-column: 1 / -1;
+    }
   }
 
   .num {
