@@ -565,16 +565,33 @@ section {
 }
 
 .cta {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 2rem;
   align-items: end;
   border: 1px solid #382f29;
   background-color: #f2ddca;
-  background-image: linear-gradient(90deg, rgba(56, 47, 41, 0.028) 1px, transparent 1px), linear-gradient(180deg, rgba(56, 47, 41, 0.024) 1px, transparent 1px), radial-gradient(circle at 88% 12%, rgba(223, 182, 94, 0.22), transparent 32%);
-  background-size: 1rem 1rem, 1rem 1rem, auto;
+  background-image: radial-gradient(circle at 88% 12%, rgba(223, 182, 94, 0.22), transparent 32%);
+  background-size: auto;
   color: #382f29;
+  overflow: hidden;
   padding: clamp(1.75rem, 5vw, 3.5rem);
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(56, 47, 41, 0.07) 1px, transparent 1px), linear-gradient(180deg, rgba(56, 47, 41, 0.055) 1px, transparent 1px);
+  background-position: calc(clamp(1.75rem, 5vw, 3.5rem) + 1px) calc(clamp(1.75rem, 5vw, 3.5rem) + 1px);
+  background-size: calc(clamp(1.75rem, 2.5vw, 2.25rem) / 2) calc(clamp(1.75rem, 2.5vw, 2.25rem) / 2);
+  -webkit-mask-image: radial-gradient(ellipse at 32% 30%, rgba(0, 0, 0, 0.9) 0 34%, rgba(0, 0, 0, 0.46) 55%, transparent 82%);
+  mask-image: radial-gradient(ellipse at 32% 30%, rgba(0, 0, 0, 0.9) 0 34%, rgba(0, 0, 0, 0.46) 55%, transparent 82%);
+  pointer-events: none;
+}
+.cta > * {
+  position: relative;
+  z-index: 1;
 }
 .cta h2 {
   max-width: 47.5rem;

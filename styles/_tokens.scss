@@ -43,6 +43,7 @@ $text-section-index: 0.875rem;
 
 $line-unit: 1px;
 $grid-size: clamp(1.75rem, 2.5vw, 2.25rem);
+$grid-size-mini: calc(#{$grid-size} / 2);
 $page-max: 76.5rem;
 $content-hero: 42rem;
 $content-lede: 37rem;
