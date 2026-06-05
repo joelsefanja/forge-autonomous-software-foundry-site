@@ -18,7 +18,7 @@ body {
   background-size: t.$space-18 t.$space-18;
   font-family: t.$font-sans;
   font-size: t.$space-4;
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,7 +43,7 @@ h1 {
   max-width: t.$content-hero;
   margin-bottom: t.$space-6;
   font-size: t.$hero-title;
-  line-height: 0.98;
+  line-height: 1.03;
   letter-spacing: -0.045em;
 }
 
@@ -52,7 +52,7 @@ h2 {
   max-width: t.$content-heading;
   margin-bottom: calc(t.$space-3 + t.$space-1);
   font-size: t.$section-title;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 

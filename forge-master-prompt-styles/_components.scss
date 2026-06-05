@@ -62,7 +62,7 @@
   margin-bottom: t.$mark-size;
   color: t.$color-muted;
   font-size: t.$lede-size;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .actions {
@@ -83,6 +83,7 @@
   background: t.$color-ink;
   color: t.$color-white;
   font-weight: 800;
+  font-size: t.$text-small;
   text-decoration: none;
   transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
 
@@ -179,7 +180,7 @@
 
   .title {
     margin-bottom: calc(t.$space-1 / 2);
-    font-size: t.$space-4;
+    font-size: t.$text-title;
     font-weight: 850;
     letter-spacing: -0.02em;
   }
@@ -187,7 +188,7 @@
   .text {
     color: t.$color-muted;
     font-size: t.$text-small;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 }
 
@@ -273,7 +274,7 @@
     span {
       color: t.$color-muted;
       font-size: t.$text-small;
-      line-height: 1.55;
+      line-height: 1.6;
     }
   }
 }
@@ -316,7 +317,7 @@
     max-width: t.$content-process;
     color: t.$color-muted;
     font-size: t.$text-small;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 }
 
@@ -330,7 +331,7 @@
   .item {
     min-height: t.$deliverable-min-height;
     background: t.$color-surface;
-    padding: t.$nav-gap;
+    padding: t.$space-6;
     transition: transform 160ms ease, background-color 160ms ease;
 
     &:nth-child(2n) {
@@ -362,7 +363,7 @@
   .text {
     color: t.$color-muted;
     font-size: t.$text-small;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 }
 
