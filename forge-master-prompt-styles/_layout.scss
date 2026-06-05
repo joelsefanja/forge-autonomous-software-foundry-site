@@ -35,11 +35,13 @@
     display: grid;
     grid-template-columns: t.$section-index-column minmax(0, 1fr);
     gap: t.$space-8;
+    align-items: start;
     margin-bottom: calc(t.$space-8 + t.$space-1);
   }
 
   .index {
     width: fit-content;
+    align-self: start;
     white-space: nowrap;
     border: t.$border;
     border-radius: t.$radius-pill;
