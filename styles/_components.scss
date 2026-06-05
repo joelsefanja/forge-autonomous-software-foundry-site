@@ -42,6 +42,23 @@
       text-decoration-thickness: calc(t.$line-unit * 2);
       text-underline-offset: t.$space-1;
     }
+
+    &.nav-action {
+      border: t.$border;
+      border-radius: t.$radius-soft;
+      padding: t.$space-1 t.$space-2;
+      background: t.$color-tape;
+      color: t.$color-ink;
+      font-weight: 800;
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible {
+        background: t.$color-accent;
+        color: t.$color-on-accent;
+        text-decoration: none;
+      }
+    }
   }
 }
 
@@ -138,8 +155,45 @@
 }
 
 .note {
+  max-width: t.$content-lede;
+  margin-top: t.$space-3;
   color: t.$color-faint;
   font-size: t.$text-small;
+}
+
+.starter {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: t.$space-2;
+  max-width: 42rem;
+  margin-top: t.$space-4;
+
+  .item {
+    border: t.$soft-border;
+    border-radius: t.$radius-soft;
+    background: t.$color-surface;
+    padding: t.$space-3;
+    transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
+
+    &:hover {
+      border-color: t.$color-accent;
+      background: t.$color-retro-panel;
+    }
+  }
+
+  span {
+    @include m.mono-label;
+    display: block;
+    margin-bottom: t.$space-1;
+    color: t.$color-accent;
+  }
+
+  strong {
+    display: block;
+    color: t.$color-ink;
+    font-size: 0.94rem;
+    line-height: 1.35;
+  }
 }
 
 .board {

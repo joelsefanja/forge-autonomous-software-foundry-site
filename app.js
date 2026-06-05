@@ -100,7 +100,7 @@
     });
   }
 
-  document.querySelectorAll('.button, .deliverables .item, .flow .step, .faq .item').forEach((element) => {
+  document.querySelectorAll('.button, .nav-action, .starter .item, .deliverables .item, .flow .step, .faq .item').forEach((element) => {
     element.addEventListener('pointerenter', () => {
       gsapInstance.to(element, {
         y: -3,

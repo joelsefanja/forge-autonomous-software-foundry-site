@@ -18,6 +18,10 @@
     flex-wrap: wrap;
   }
 
+  .starter {
+    grid-template-columns: 1fr;
+  }
+
   .board {
     box-shadow: t.$shadow-board-mobile;
   }

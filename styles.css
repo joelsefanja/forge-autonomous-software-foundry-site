@@ -181,6 +181,20 @@ h3 {
   text-decoration-thickness: 2px;
   text-underline-offset: 0.25rem;
 }
+.nav a.nav-action {
+  border: 1px solid #443126;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: #f1c86a;
+  color: #443126;
+  font-weight: 800;
+  text-decoration: none;
+}
+.nav a.nav-action:hover, .nav a.nav-action:focus-visible {
+  background: #a94f1d;
+  color: #fffaf2;
+  text-decoration: none;
+}
 
 .eyebrow {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
@@ -271,8 +285,45 @@ h3 {
 }
 
 .note {
+  max-width: 37rem;
+  margin-top: 0.75rem;
   color: #746250;
   font-size: 1rem;
+}
+
+.starter {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  max-width: 42rem;
+  margin-top: 1rem;
+}
+.starter .item {
+  border: 1px solid #decbb3;
+  border-radius: 0.25rem;
+  background: #fffaf2;
+  padding: 0.75rem;
+  transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
+}
+.starter .item:hover {
+  border-color: #a94f1d;
+  background: #ffe5c7;
+}
+.starter span {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #a94f1d;
+}
+.starter strong {
+  display: block;
+  color: #443126;
+  font-size: 0.94rem;
+  line-height: 1.35;
 }
 
 .board {
@@ -575,6 +626,9 @@ h3 {
   }
   .nav {
     flex-wrap: wrap;
+  }
+  .starter {
+    grid-template-columns: 1fr;
   }
   .board {
     box-shadow: 0.5rem 0.5rem 0 #a86635;
