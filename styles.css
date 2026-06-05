@@ -8,8 +8,8 @@ html {
 
 body {
   margin: 0;
-  color: #111111;
-  background: linear-gradient(90deg, rgba(17, 17, 17, 0.045) 1px, transparent 1px), linear-gradient(180deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px), #f6f1e8;
+  color: #211d18;
+  background: linear-gradient(90deg, rgba(33, 29, 24, 0.045) 1px, transparent 1px), linear-gradient(180deg, rgba(33, 29, 24, 0.035) 1px, transparent 1px), #f6f1e8;
   background-size: 4.5rem 4.5rem;
   font-family: "Atkinson Hyperlegible", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1rem;
@@ -19,7 +19,7 @@ body {
 
 ::selection {
   background: #ffd166;
-  color: #111111;
+  color: #211d18;
 }
 
 a {
@@ -38,10 +38,10 @@ h1 {
   line-height: 1;
   letter-spacing: -0.04em;
   text-wrap: balance;
-  max-width: 48.75rem;
-  margin-bottom: 1.5rem;
-  font-size: clamp(3rem, 6.2vw, 5.9rem);
-  line-height: 1.03;
+  max-width: 42rem;
+  margin-bottom: 1rem;
+  font-size: clamp(2.85rem, 4.2vw, 4.55rem);
+  line-height: 1;
   letter-spacing: -0.045em;
 }
 
@@ -52,7 +52,7 @@ h2 {
   text-wrap: balance;
   max-width: 51.25rem;
   margin-bottom: 1rem;
-  font-size: clamp(2rem, 3.7vw, 4.2rem);
+  font-size: clamp(1.8rem, 3vw, 3.35rem);
   line-height: 1.05;
   letter-spacing: -0.04em;
 }
@@ -65,6 +65,59 @@ h3 {
   letter-spacing: -0.025em;
 }
 
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes section-reveal {
+  from {
+    opacity: 0.68;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero .copy > *,
+  .board {
+    animation: hero-rise 640ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .hero .copy > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .hero .copy > :nth-child(3) {
+    animation-delay: 140ms;
+  }
+  .hero .copy > :nth-child(4) {
+    animation-delay: 200ms;
+  }
+  .hero .copy > :nth-child(5) {
+    animation-delay: 260ms;
+  }
+  .board {
+    animation-delay: 180ms;
+  }
+  @supports (animation-timeline: view()) {
+    .section > .head,
+    .split,
+    .process,
+    .deliverables,
+    .faq,
+    .cta {
+      animation: section-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 24%;
+    }
+  }
+}
 .page {
   width: min(73.75rem, 100% - 2rem);
   margin: 0 auto;
@@ -75,17 +128,17 @@ h3 {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.75rem 0;
-  border-bottom: 1px solid #111111;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #211d18;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(19.25rem, 0.98fr);
-  gap: clamp(2.5rem, 6vw, 5.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.84fr);
+  gap: clamp(2rem, 4.5vw, 4.5rem);
   align-items: center;
-  min-height: calc(100dvh - 5.75rem);
-  padding: clamp(3rem, 8vw, 6rem) 0;
+  min-height: calc(100dvh - 4.75rem);
+  padding: clamp(2rem, 4.5vw, 3.5rem) 0;
 }
 .hero .copy {
   min-width: 0;
@@ -93,7 +146,7 @@ h3 {
 
 .section {
   padding: clamp(3.5rem, 9vw, 6.5rem) 0;
-  border-top: 1px solid #111111;
+  border-top: 1px solid #211d18;
 }
 .section > .head {
   display: grid;
@@ -106,28 +159,28 @@ h3 {
   width: fit-content;
   align-self: start;
   white-space: nowrap;
-  border: 1px solid #111111;
+  border: 1px solid #211d18;
   border-radius: 999px;
   padding: calc(0.25rem + 1px) 0.5rem;
   color: #ffffff;
   background: #ff5c00;
-  box-shadow: 0.25rem 0.25rem 0 #111111;
+  box-shadow: 0.25rem 0.25rem 0 #211d18;
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
 }
 .section .intro {
   max-width: 48rem;
   color: #5e5b55;
-  font-size: clamp(1.125rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.0625rem, 1.35vw, 1.24rem);
 }
 
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 1px;
-  border: 1px solid #111111;
-  background: #111111;
+  border: 1px solid #211d18;
+  background: #211d18;
 }
 
 .footer {
@@ -157,7 +210,7 @@ h3 {
   width: 2.125rem;
   height: 2.125rem;
   color: #ffffff;
-  background: #111111;
+  background: #211d18;
   font-size: 0.875rem;
   font-weight: 900;
   transform: rotate(-4deg);
@@ -175,7 +228,7 @@ h3 {
   text-decoration: none;
 }
 .nav a:hover, .nav a:focus-visible {
-  color: #111111;
+  color: #211d18;
   text-decoration: underline;
   text-decoration-color: #ff5c00;
   text-decoration-thickness: 2px;
@@ -184,26 +237,51 @@ h3 {
 
 .eyebrow {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   width: fit-content;
-  margin: 0 0 1.375rem;
-  border: 1px solid #111111;
+  margin: 0 0 1.25rem;
+  border: 1px solid #211d18;
   border-radius: 999px;
-  padding: 0.375rem 0.625rem;
-  color: #111111;
+  padding: 0.5rem 0.75rem;
+  color: #211d18;
   background: #ffe0cc;
-  box-shadow: 0.25rem 0.25rem 0 #111111;
+  box-shadow: 0.25rem 0.25rem 0 #211d18;
 }
 
 .lede {
-  max-width: 44rem;
-  margin-bottom: 2.125rem;
+  max-width: 37rem;
+  margin-bottom: 1.25rem;
   color: #5e5b55;
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
-  line-height: 1.6;
+  font-size: clamp(1.0625rem, 1.2vw, 1.22rem);
+  line-height: 1.45;
+}
+
+.proofline {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  border: 1px solid #211d18;
+  background: #211d18;
+}
+.proofline span {
+  padding: 0.5rem 0.75rem;
+  border-right: 1px solid #211d18;
+  border-color: #211d18;
+  background: #fffaf1;
+  color: #211d18;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.proofline span:last-child {
+  border-right: 0;
+  background: #ffd166;
 }
 
 .actions {
@@ -218,10 +296,10 @@ h3 {
   align-items: center;
   justify-content: center;
   min-height: 3rem;
-  border: 1px solid #111111;
+  border: 1px solid #211d18;
   border-radius: 999px;
   padding: 0 1.125rem;
-  background: #111111;
+  background: #211d18;
   color: #ffffff;
   font-weight: 800;
   font-size: 1rem;
@@ -238,11 +316,11 @@ h3 {
 }
 .button.secondary {
   background: transparent;
-  color: #111111;
+  color: #211d18;
 }
 .button.secondary:hover, .button.secondary:focus-visible {
   background: #fffaf1;
-  color: #111111;
+  color: #211d18;
 }
 
 .note {
@@ -251,34 +329,34 @@ h3 {
 }
 
 .board {
-  border: 1px solid #111111;
+  border: 1px solid #211d18;
   border-radius: 0.625rem;
   background: #fffaf1;
-  box-shadow: 0.75rem 0.75rem 0 #111111;
+  box-shadow: 0.625rem 0.625rem 0 #211d18;
   overflow: hidden;
 }
 .board .head {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid #111111;
-  padding: 1.125rem 1.25rem;
+  border-bottom: 1px solid #211d18;
+  padding: 1rem 1.25rem;
 }
 .board .status {
   color: #1f7a4c;
 }
 .board .body {
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 .flow {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 .flow .step {
   display: grid;
@@ -288,7 +366,7 @@ h3 {
   border: 1px solid #d8d0c2;
   border-radius: 0.625rem;
   background: rgb(255, 253.6428571429, 251.2);
-  padding: 1rem;
+  padding: 0.75rem;
   transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
 }
 .flow .step:nth-child(even) {
@@ -306,30 +384,30 @@ h3 {
   background: #ff5c00;
   color: #ffffff;
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
   border-radius: 0.3125rem;
 }
 .flow .title {
   margin-bottom: 0.125rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 850;
   letter-spacing: -0.02em;
 }
 .flow .text {
   color: #5e5b55;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid #111111;
+  border-top: 1px solid #211d18;
 }
 .metrics .metric {
-  padding: 1rem 1.25rem;
-  border-right: 1px solid #111111;
+  padding: 0.75rem 1rem;
+  border-right: 1px solid #211d18;
 }
 .metrics .metric:last-child {
   border-right: 0;
@@ -337,13 +415,14 @@ h3 {
 .metrics .metric strong {
   display: block;
   margin-bottom: 0.25rem;
-  font-size: 1.875rem;
+  font-size: clamp(1.4rem, 2.4vw, 1.625rem);
   line-height: 1;
   letter-spacing: -0.04em;
 }
 .metrics .metric span {
   color: #5e5b55;
-  font-size: 0.8125rem;
+  font-size: 0.9rem;
+  line-height: 1.25;
 }
 
 .panel {
@@ -352,7 +431,7 @@ h3 {
 }
 .panel.inverse {
   color: #ffffff;
-  background: #111111;
+  background: #2d271f;
 }
 .panel.inverse p,
 .panel.inverse .row span {
@@ -363,16 +442,16 @@ h3 {
 }
 .panel .label {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   width: fit-content;
-  border: 1px solid #111111;
+  border: 1px solid #211d18;
   border-radius: 999px;
   padding: calc(0.25rem + 1px) 0.5rem;
   margin-bottom: 1.125rem;
-  color: #111111;
+  color: #211d18;
   background: #ffd166;
 }
 .panel p {
@@ -393,7 +472,7 @@ h3 {
   border-bottom: 1px solid #d8d0c2;
 }
 .list .row b {
-  color: #111111;
+  color: #211d18;
 }
 .list .row span {
   color: #5e5b55;
@@ -403,7 +482,7 @@ h3 {
 
 .process {
   display: grid;
-  border: 1px solid #111111;
+  border: 1px solid #211d18;
   background: #fffaf1;
 }
 .process .row {
@@ -412,7 +491,7 @@ h3 {
   gap: 1.5rem;
   align-items: start;
   padding: 1.375rem;
-  border-bottom: 1px solid #111111;
+  border-bottom: 1px solid #211d18;
   transition: background-color 160ms ease;
 }
 .process .row:hover {
@@ -441,8 +520,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  border: 1px solid #111111;
-  background: #111111;
+  border: 1px solid #211d18;
+  background: #211d18;
 }
 .deliverables .item {
   min-height: 11.25rem;
@@ -457,20 +536,17 @@ h3 {
   transform: translateY(-0.125rem);
   background: #ffffff;
 }
-.deliverables .item:last-child:nth-child(3n+1) {
-  grid-column: 1/-1;
-}
 .deliverables .num {
   display: block;
   margin-bottom: 2.625rem;
   color: #ff5c00;
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
 }
 .deliverables .title {
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 850;
   letter-spacing: -0.02em;
 }
@@ -480,13 +556,37 @@ h3 {
   line-height: 1.6;
 }
 
+.faq {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #211d18;
+  background: #211d18;
+}
+.faq .item {
+  background: #fffaf1;
+  padding: 1.5rem;
+}
+.faq .question {
+  margin-bottom: 0.5rem;
+  color: #211d18;
+  font-size: 1.125rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+.faq p {
+  margin-bottom: 0;
+  color: #5e5b55;
+  font-size: 1rem;
+}
+
 .cta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 2rem;
   align-items: end;
-  border: 1px solid #111111;
-  background: #111111;
+  border: 1px solid #211d18;
+  background: #2d271f;
   color: #ffffff;
   padding: clamp(1.75rem, 5vw, 3.5rem);
 }
@@ -501,7 +601,15 @@ h3 {
 .cta .button {
   border-color: #ffffff;
   background: #ffffff;
-  color: #111111;
+  color: #211d18;
+}
+.cta .button.secondary {
+  background: transparent;
+  color: #ffffff;
+}
+.cta .button.secondary:hover, .cta .button.secondary:focus-visible {
+  background: #ffffff;
+  color: #211d18;
 }
 
 @media (max-width: 57.5rem) {
@@ -514,12 +622,13 @@ h3 {
   }
   .hero {
     min-height: auto;
+    padding-top: 2rem;
   }
   .nav {
     flex-wrap: wrap;
   }
   .board {
-    box-shadow: 0.5rem 0.5rem 0 #111111;
+    box-shadow: 0.5rem 0.5rem 0 #211d18;
   }
   .flow .step:nth-child(even) {
     transform: none;
@@ -533,6 +642,9 @@ h3 {
   .deliverables {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .faq {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 40rem) {
   body {
@@ -545,7 +657,7 @@ h3 {
     padding: clamp(3.5rem, 12vw, 4.5rem) 0;
   }
   h1 {
-    font-size: clamp(2.35rem, 15vw, 3.75rem);
+    font-size: clamp(2.45rem, 12vw, 3.35rem);
   }
   .actions {
     align-items: stretch;
@@ -557,6 +669,16 @@ h3 {
     flex-basis: 100%;
     margin-top: 0.25rem;
   }
+  .proofline {
+    width: 100%;
+  }
+  .proofline span {
+    flex: 1 1 50%;
+    text-align: center;
+  }
+  .proofline span:nth-child(2n) {
+    border-right: 0;
+  }
   .board .head {
     flex-direction: column;
   }
@@ -567,7 +689,7 @@ h3 {
   }
   .metrics .metric {
     border-right: 0;
-    border-bottom: 1px solid #111111;
+    border-bottom: 1px solid #211d18;
   }
   .metrics .metric:last-child {
     border-bottom: 0;

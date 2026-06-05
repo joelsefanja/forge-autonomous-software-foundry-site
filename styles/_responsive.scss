@@ -11,6 +11,7 @@
 
   .hero {
     min-height: auto;
+    padding-top: t.$space-8;
   }
 
   .nav {
@@ -39,6 +40,10 @@
 
   .deliverables {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .faq {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -69,6 +74,19 @@
     .note {
       flex-basis: 100%;
       margin-top: t.$space-1;
+    }
+  }
+
+  .proofline {
+    width: 100%;
+
+    span {
+      flex: 1 1 50%;
+      text-align: center;
+
+      &:nth-child(2n) {
+        border-right: 0;
+      }
     }
   }
 

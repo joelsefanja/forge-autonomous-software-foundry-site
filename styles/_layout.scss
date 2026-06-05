@@ -10,13 +10,13 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: t.$space-6;
-  padding: t.$space-7 0;
+  padding: t.$space-5 0;
   border-bottom: t.$border;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(t.$process-title-column + t.$space-22, 0.98fr);
+  grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.84fr);
   gap: t.$hero-gap;
   align-items: center;
   min-height: t.$hero-height;

@@ -48,10 +48,10 @@
 .eyebrow {
   @include m.mono-label;
   width: fit-content;
-  margin: 0 0 t.$nav-gap;
+  margin: 0 0 t.$space-5;
   border: t.$border;
   border-radius: t.$radius-pill;
-  padding: calc(t.$space-2 - t.$space-1 / 2) calc(t.$space-3 - t.$space-1 / 2);
+  padding: t.$space-2 t.$space-3;
   color: t.$color-ink;
   background: t.$color-accent-soft;
   box-shadow: t.$press-offset t.$press-offset 0 t.$color-ink;
@@ -59,10 +59,37 @@
 
 .lede {
   max-width: t.$content-lede;
-  margin-bottom: t.$mark-size;
+  margin-bottom: t.$space-5;
   color: t.$color-muted;
   font-size: t.$lede-size;
-  line-height: 1.6;
+  line-height: 1.45;
+}
+
+.proofline {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin-bottom: t.$space-6;
+  border: t.$border;
+  background: t.$color-ink;
+
+  span {
+    padding: t.$space-2 t.$space-3;
+    border-right: t.$border;
+    border-color: t.$color-ink;
+    background: t.$color-surface;
+    color: t.$color-ink;
+    font-family: t.$font-mono;
+    font-size: t.$text-label;
+    font-weight: 800;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    &:last-child {
+      border-right: 0;
+      background: t.$color-tape;
+    }
+  }
 }
 
 .actions {
@@ -128,7 +155,7 @@
     justify-content: space-between;
     gap: t.$space-4;
     border-bottom: t.$border;
-    padding: calc(t.$space-4 + t.$space-1 / 2) t.$space-5;
+    padding: t.$space-4 t.$space-5;
   }
 
   .status {
@@ -136,13 +163,13 @@
   }
 
   .body {
-    padding: t.$space-5;
+    padding: t.$space-4;
   }
 }
 
 .flow {
   display: grid;
-  gap: t.$space-3;
+  gap: t.$space-2;
 
   .step {
     display: grid;
@@ -152,7 +179,7 @@
     border: t.$soft-border;
     border-radius: t.$radius-soft;
     background: color.adjust(t.$color-surface, $lightness: 2%);
-    padding: calc(t.$space-3 + t.$space-1);
+    padding: t.$space-3;
     transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
 
     &:nth-child(even) {
@@ -188,7 +215,7 @@
   .text {
     color: t.$color-muted;
     font-size: t.$text-small;
-    line-height: 1.6;
+    line-height: 1.45;
   }
 }
 
@@ -198,7 +225,7 @@
   border-top: t.$border;
 
   .metric {
-    padding: t.$space-4 t.$space-5;
+    padding: t.$space-3 t.$space-4;
     border-right: t.$border;
 
     &:last-child {
@@ -208,14 +235,15 @@
     strong {
       display: block;
       margin-bottom: t.$space-1;
-      font-size: t.$text-metric;
+      font-size: clamp(1.4rem, 2.4vw, t.$text-metric);
       line-height: 1;
       letter-spacing: -0.04em;
     }
 
     span {
       color: t.$color-muted;
-      font-size: t.$text-label;
+      font-size: 0.9rem;
+      line-height: 1.25;
     }
   }
 }
@@ -226,7 +254,7 @@
 
   &.inverse {
     color: t.$color-white;
-    background: t.$color-ink;
+    background: t.$color-dark-surface;
 
     p,
     .row span {
@@ -343,9 +371,6 @@
       background: t.$color-white;
     }
 
-    &:last-child:nth-child(3n + 1) {
-      grid-column: 1 / -1;
-    }
   }
 
   .num {
@@ -371,13 +396,40 @@
   }
 }
 
+.faq {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: t.$line-unit;
+  border: t.$border;
+  background: t.$color-ink;
+
+  .item {
+    background: t.$color-surface;
+    padding: t.$space-6;
+  }
+
+  .question {
+    margin-bottom: t.$space-2;
+    color: t.$color-ink;
+    font-size: t.$text-title;
+    font-weight: 850;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: t.$color-muted;
+    font-size: t.$text-small;
+  }
+}
+
 .cta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: t.$space-8;
   align-items: end;
   border: t.$border;
-  background: t.$color-ink;
+  background: t.$color-dark-surface;
   color: t.$color-white;
   padding: t.$cta-pad;
 
@@ -395,5 +447,16 @@
     border-color: t.$color-white;
     background: t.$color-white;
     color: t.$color-ink;
+
+    &.secondary {
+      background: transparent;
+      color: t.$color-white;
+
+      &:hover,
+      &:focus-visible {
+        background: t.$color-white;
+        color: t.$color-ink;
+      }
+    }
   }
 }
