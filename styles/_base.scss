@@ -16,6 +16,10 @@ body {
     linear-gradient(180deg, rgba(t.$color-ink, 0.022) t.$line-unit, transparent t.$line-unit),
     radial-gradient(circle at 50% 36%, rgba(t.$color-white, 0.84) 0, rgba(t.$color-bg, 0.94) 48%, rgba(t.$color-ink, 0.045) 100%),
     t.$color-bg;
+  background-position: calc((100vw - min(#{t.$page-max}, calc(100vw - #{t.$space-8}))) / 2) 0,
+    calc((100vw - min(#{t.$page-max}, calc(100vw - #{t.$space-8}))) / 2) 0,
+    center,
+    center;
   background-size: t.$grid-size t.$grid-size, t.$grid-size t.$grid-size, auto, auto;
   font-family: t.$font-sans;
   font-size: t.$space-4;

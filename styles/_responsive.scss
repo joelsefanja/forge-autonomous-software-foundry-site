@@ -47,6 +47,10 @@
 
 @media (max-width: t.$breakpoint-mobile) {
   body {
+    background-position: calc((100vw - min(#{t.$page-max}, calc(100vw - #{t.$mobile-page-gutter}))) / 2) 0,
+      calc((100vw - min(#{t.$page-max}, calc(100vw - #{t.$mobile-page-gutter}))) / 2) 0,
+      center,
+      center;
     background-size: t.$mobile-grid t.$mobile-grid, t.$mobile-grid t.$mobile-grid, auto, auto;
   }
 
