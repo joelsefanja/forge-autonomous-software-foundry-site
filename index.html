@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FORGE — Master Prompt</title>
+<title>FORGE — Software Product Foundry</title>
+<meta name="description" content="FORGE helps turn validated market problems into shipped, documented and handover-ready software products.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -42,7 +43,7 @@
   }
 
   .container {
-    max-width: 960px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 60px 32px;
     position: relative;
@@ -51,13 +52,29 @@
 
   /* HEADER */
   .hero {
-    text-align: center;
-    margin-bottom: 80px;
-    padding: 80px 40px;
+    text-align: left;
+    margin-bottom: 64px;
+    min-height: 660px;
     border: 1px solid var(--border);
     background: linear-gradient(135deg, #0d0d18 0%, #0a0a12 100%);
     position: relative;
     overflow: hidden;
+    display: grid;
+    align-items: stretch;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+    padding: clamp(32px, 6vw, 72px);
+  }
+
+  .hero-copy {
+    max-width: 680px;
   }
 
   .hero::before {
@@ -92,7 +109,7 @@
 
   h1 {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(56px, 8vw, 96px);
+    font-size: clamp(48px, 7vw, 92px);
     font-weight: 800;
     letter-spacing: -3px;
     line-height: 0.9;
@@ -105,17 +122,125 @@
 
   .tagline {
     font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
+    font-size: clamp(17px, 2vw, 21px);
     font-weight: 300;
     color: var(--muted);
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 660px;
+    margin: 0;
     line-height: 1.6;
   }
 
   .tagline strong {
     color: var(--accent2);
     font-weight: 500;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .hero-panel {
+    background: linear-gradient(180deg, rgba(17,17,24,0.96), rgba(13,13,21,0.72));
+    border: 1px solid rgba(232,232,240,0.12);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.06);
+    padding: 28px;
+    position: relative;
+  }
+
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 0%, rgba(255,92,0,0.16), transparent 32%), radial-gradient(circle at 90% 30%, rgba(0,212,255,0.12), transparent 26%);
+    pointer-events: none;
+  }
+
+  .panel-kicker {
+    position: relative;
+    z-index: 1;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .loop-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 10px;
+  }
+
+  .loop-step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(232,232,240,0.08);
+  }
+
+  .loop-step:last-child { border-bottom: none; }
+
+  .step-index {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255,92,0,0.4);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .step-copy {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .proof-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: 28px;
+    background: rgba(232,232,240,0.08);
+    border: 1px solid rgba(232,232,240,0.08);
+  }
+
+  .proof-item {
+    background: rgba(10,10,15,0.82);
+    padding: 14px;
+  }
+
+  .proof-label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .proof-text {
+    display: block;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.45;
   }
 
   /* DIAMOND */
@@ -155,7 +280,7 @@
   }
 
   .d-diamonds { color: var(--accent); font-size: 18px; letter-spacing: 4px; }
-  .d-label { color: var(--text); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+  .d-label { color: var(--text); font-size: 12px; letter-spacing: 1px; }
   .d-label span { color: var(--muted); }
 
   /* PHASES */
@@ -230,7 +355,10 @@
   }
 
   .card-icon {
-    font-size: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--accent);
     margin-bottom: 10px;
   }
 
@@ -406,27 +534,27 @@
     line-height: 1.6;
   }
 
-  /* AGENTS */
-  .agents-grid {
+  /* WORKFLOWS */
+  .workflows-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 12px;
     margin: 24px 0;
   }
 
-  .agent-card {
+  .workflow-card {
     background: var(--surface);
     border: 1px solid var(--border);
     padding: 16px;
     transition: all 0.2s;
   }
 
-  .agent-card:hover {
+  .workflow-card:hover {
     border-color: rgba(0,212,255,0.3);
     background: rgba(0,212,255,0.03);
   }
 
-  .agent-name {
+  .workflow-name {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 500;
@@ -434,51 +562,10 @@
     margin-bottom: 6px;
   }
 
-  .agent-role {
+  .workflow-role {
     font-size: 11px;
     color: var(--muted);
     line-height: 1.5;
-  }
-
-  /* NAMES */
-  .names-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 8px;
-    margin: 24px 0;
-  }
-
-  .name-chip {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 14px 16px;
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    transition: all 0.2s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .name-chip::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,92,0,0.06), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .name-chip:hover::after { opacity: 1; }
-  .name-chip:hover { border-color: rgba(255,92,0,0.4); }
-
-  .name-meaning {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    color: var(--muted);
-    font-weight: 400;
-    margin-top: 4px;
   }
 
   /* DIGEST */
@@ -512,12 +599,14 @@
   }
 
   .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 8px 16px;
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-decoration: none;
     border: none;
     cursor: pointer;
     transition: all 0.15s;
@@ -586,6 +675,12 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+  @media (max-width: 860px) {
+    .hero { min-height: auto; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .proof-strip { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 640px) {
     .channels { grid-template-columns: 1fr; }
     .container { padding: 32px 20px; }
@@ -598,12 +693,66 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">Master Prompt v1.0</div>
-    <h1>FORGE</h1>
-    <p class="tagline">
-      From <strong>problem signal</strong> to <strong>validated product</strong> to <strong>automated exit</strong> —<br>
-      One founder. Infinite leverage. Built by agents.
-    </p>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="badge">Autonomous software foundry</div>
+        <h1>From market signal to shipped software product</h1>
+        <p class="tagline">
+          FORGE helps turn validated customer problems into <strong>software products</strong> with research,
+          design, development, launch assets and <strong>handover-ready documentation</strong>.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:joelsefanja@gmail.com?subject=FORGE%20pilot">Discuss a pilot</a>
+          <a class="btn btn-secondary" href="#process">View the process</a>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="FORGE process preview">
+        <div class="panel-kicker">FORGE loop</div>
+        <div class="loop-card">
+          <div class="loop-step">
+            <span class="step-index">01</span>
+            <div>
+              <div class="step-title">Discover</div>
+              <div class="step-copy">Find customer pain with enough urgency to build for.</div>
+            </div>
+          </div>
+          <div class="loop-step">
+            <span class="step-index">02</span>
+            <div>
+              <div class="step-title">Validate</div>
+              <div class="step-copy">Check demand, alternatives, pricing signals and risk.</div>
+            </div>
+          </div>
+          <div class="loop-step">
+            <span class="step-index">03</span>
+            <div>
+              <div class="step-title">Build</div>
+              <div class="step-copy">Create the product with tests, docs and release gates.</div>
+            </div>
+          </div>
+          <div class="loop-step">
+            <span class="step-index">04</span>
+            <div>
+              <div class="step-title">Launch</div>
+              <div class="step-copy">Prepare the page, payments, support model and first release.</div>
+            </div>
+          </div>
+          <div class="loop-step">
+            <span class="step-index">05</span>
+            <div>
+              <div class="step-title">Hand over</div>
+              <div class="step-copy">Package evidence, documentation and transfer steps.</div>
+            </div>
+          </div>
+        </div>
+        <div class="proof-strip" aria-label="FORGE outcomes">
+          <div class="proof-item"><span class="proof-label">Research</span><span class="proof-text">Evidence before code</span></div>
+          <div class="proof-item"><span class="proof-label">Build</span><span class="proof-text">Reviewable software</span></div>
+          <div class="proof-item"><span class="proof-label">Handover</span><span class="proof-text">Transfer-ready assets</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- DIAMOND -->
@@ -611,87 +760,87 @@
     <div class="diamond-viz">
       <div class="d-row">
         <span class="d-diamonds">◇</span>
-        <span class="d-label">TRIGGER <span>— idea / signal / problem</span></span>
+        <span class="d-label">Discover <span>— find a real customer problem</span></span>
       </div>
       <div class="d-row">
         <span class="d-diamonds">◇ ◇</span>
-        <span class="d-label">DIVERGE <span>— all possibilities</span></span>
+        <span class="d-label">Explore <span>— compare promising opportunities</span></span>
       </div>
       <div class="d-row">
         <span class="d-diamonds">◇ ◇ ◇</span>
-        <span class="d-label">EXPLORE <span>— research & validate</span></span>
+        <span class="d-label">Validate <span>— check demand and constraints</span></span>
       </div>
       <div class="d-row">
         <span class="d-diamonds">◇ ◇</span>
-        <span class="d-label">CONVERGE <span>— best paths</span></span>
+        <span class="d-label">Choose <span>— define the product worth building</span></span>
       </div>
       <div class="d-row">
         <span class="d-diamonds">◇</span>
-        <span class="d-label">EXECUTE <span>— build & deploy</span></span>
+        <span class="d-label">Ship <span>— build, launch and hand over</span></span>
       </div>
     </div>
   </div>
 
   <!-- PHASE 1 -->
-  <div class="phase">
+  <div class="phase" id="process">
     <div class="phase-header">
       <span class="phase-num">PHASE 01</span>
-      <h2>Deep Research</h2>
+      <h2>Find proven opportunities</h2>
     </div>
-    <p style="color:var(--muted); margin-bottom:24px;">Research all market verticals, competitors, and opportunity signals. Use web search. Be exhaustive.</p>
+    <p style="color:var(--muted); margin-bottom:24px;">FORGE scans markets, competitors and customer pain points to find product ideas with real demand.</p>
 
-    <h3>Competitors to Study</h3>
+    <h3>Signals FORGE studies</h3>
     <div class="card-grid">
       <div class="card">
-        <div class="card-icon">🤖</div>
-        <div class="card-title">AI Dev Platforms</div>
-        <div class="card-desc">Cursor, Devin, Bolt.new, Lovable.dev, v0.dev, Google Stitch, GitHub Copilot Workspace</div>
+        <div class="card-icon">01</div>
+        <div class="card-title">Customer complaints</div>
+        <div class="card-desc">Repeated pain in forums, reviews and support-heavy workflows.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🛒</div>
-        <div class="card-title">Acquisition Markets</div>
-        <div class="card-desc">Acquire.com, Flippa, FE International, Empire Flippers, Tiny.com, Calm Company Fund</div>
+        <div class="card-icon">02</div>
+        <div class="card-title">Review gaps</div>
+        <div class="card-desc">What users dislike in existing software and what they still need.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🏷️</div>
-        <div class="card-title">White-label Models</div>
-        <div class="card-desc">GoHighLevel, Simvoly, Vendasta, SaaS Mantra, AppSumo, Dealify</div>
+        <div class="card-icon">03</div>
+        <div class="card-title">Job requests</div>
+        <div class="card-desc">Paid work requests that show people already budget for a solution.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🏛️</div>
-        <div class="card-title">Enterprise/Gov SW</div>
-        <div class="card-desc">Blackboard, Osiris, Topicus, Centric, PinkWeb — study compliance requirements</div>
+        <div class="card-icon">04</div>
+        <div class="card-title">Market tools</div>
+        <div class="card-desc">Competing tools, pricing, missing features and positioning patterns.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🔌</div>
-        <div class="card-title">MplusKassa</div>
-        <div class="card-desc">mpluskassa.nl + developers.mpluskassa.nl — POS integration & partnership opportunities</div>
+        <div class="card-icon">05</div>
+        <div class="card-title">Integration needs</div>
+        <div class="card-desc">Places where software must connect to payments, POS, finance or CRM.</div>
       </div>
       <div class="card">
-        <div class="card-icon">📊</div>
-        <div class="card-title">Local Tool Agents</div>
-        <div class="card-desc">Julius AI, Rows.com, Excel AI agents, Claude Code — local-first productivity tools</div>
+        <div class="card-icon">06</div>
+        <div class="card-title">Operational bottlenecks</div>
+        <div class="card-desc">Manual work, spreadsheet chaos and reporting gaps that slow teams down.</div>
       </div>
     </div>
 
-    <h3>Problem Discovery Sources</h3>
+    <h3>Where evidence comes from</h3>
     <table class="data-table">
       <thead>
         <tr>
-          <th>Source</th>
-          <th>Type</th>
-          <th>Automation</th>
+          <th>Signal</th>
+          <th>What it reveals</th>
+          <th>Priority</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Reddit (niche subreddits)</td><td>Forum</td><td><span class="tag tag-high">HIGH</span></td></tr>
-        <tr><td>G2 / Capterra (1–3 star reviews)</td><td>B2B SaaS gaps</td><td><span class="tag tag-high">HIGH</span></td></tr>
-        <tr><td>AppSumo negative reviews</td><td>Unmet needs</td><td><span class="tag tag-high">HIGH</span></td></tr>
-        <tr><td>GitHub Issues (popular repos)</td><td>Dev tool gaps</td><td><span class="tag tag-high">HIGH</span></td></tr>
-        <tr><td>Upwork job postings</td><td>Demand signals</td><td><span class="tag tag-high">HIGH</span></td></tr>
-        <tr><td>Quora questions</td><td>Q&A</td><td><span class="tag tag-med">MED</span></td></tr>
-        <tr><td>Product Hunt "Ship"</td><td>Launch signals</td><td><span class="tag tag-med">MED</span></td></tr>
-        <tr><td>X/Twitter complaints</td><td>Real-time pain</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr><td>Niche forums</td><td>Repeated complaints and workarounds</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>G2 and Capterra reviews</td><td>Where current B2B tools disappoint users</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>App marketplaces</td><td>Unmet needs in paid software categories</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>GitHub issues</td><td>Developer workflow gaps and repeated requests</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>Freelance job posts</td><td>Problems people are already willing to pay for</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>Question sites</td><td>Confusing tasks and underserved users</td><td><span class="tag tag-med">Medium</span></td></tr>
+        <tr><td>Launch platforms</td><td>New categories, traction and positioning</td><td><span class="tag tag-med">Medium</span></td></tr>
+        <tr><td>Social complaints</td><td>Fresh pain, urgency and wording from real users</td><td><span class="tag tag-high">High</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -700,98 +849,98 @@
   <div class="phase">
     <div class="phase-header">
       <span class="phase-num">PHASE 02</span>
-      <h2>FORGE Architecture</h2>
+      <h2>How FORGE works</h2>
     </div>
 
-    <h3>Three Revenue Channels</h3>
+    <h3>Ways products can create value</h3>
     <div class="channels">
       <div class="channel">
         <div class="channel-num">01</div>
-        <div class="channel-title">Direct SaaS</div>
-        <div class="channel-desc">Users subscribe directly. NL/EU market focus. iDEAL + Stripe. Recurring MRR.</div>
+        <div class="channel-title">Subscription product</div>
+        <div class="channel-desc">Customers pay monthly for a focused tool that solves a recurring problem.</div>
       </div>
       <div class="channel">
         <div class="channel-num">02</div>
-        <div class="channel-title">White-label</div>
-        <div class="channel-desc">Entrepreneurs buy the brand + product. GoHighLevel model. Agency resellers.</div>
+        <div class="channel-title">Resellable product</div>
+        <div class="channel-desc">A product can be packaged for agencies, operators or niche entrepreneurs.</div>
       </div>
       <div class="channel">
         <div class="channel-num">03</div>
-        <div class="channel-title">Full Acquisition</div>
-        <div class="channel-desc">Sell entire product + company. Acquire.com. €50K–€500K per exit. Automated handover.</div>
+        <div class="channel-title">Product sale</div>
+        <div class="channel-desc">A built product can be prepared for buyer review with clean documents and transfer steps.</div>
       </div>
     </div>
 
-    <h3>The SDLC Agent Pipeline</h3>
+    <h3>From idea to launch</h3>
     <div class="pipeline">
       <div class="pipe-step">
         <span class="pipe-num">01</span>
         <div class="pipe-content">
-          <div class="pipe-title">Requirements Agent</div>
-          <div class="pipe-desc">Clarifies scope from natural language or problem signal → writes BDD feature files (Gherkin)</div>
+          <div class="pipe-title">Define the product</div>
+          <div class="pipe-desc">Turn a market problem into a clear scope, user journeys and acceptance criteria.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">02</span>
         <div class="pipe-content">
-          <div class="pipe-title">Architecture Agent</div>
-          <div class="pipe-desc">Designs system using Hexagonal Architecture + Laravel + Angular 21. Selects packages. Generates ADRs.</div>
+          <div class="pipe-title">Design the system</div>
+          <div class="pipe-desc">Choose the structure, interfaces and technical decisions needed for a maintainable product.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">03</span>
         <div class="pipe-content">
-          <div class="pipe-title">Code Generation Agent (OpenCode backbone)</div>
-          <div class="pipe-desc">Generates Angular components, Laravel controllers. Enforces code guidelines. Generates OpenAPI spec.</div>
+          <div class="pipe-title">Build the software</div>
+          <div class="pipe-desc">Create the frontend, backend, API contract and product workflows in reviewable changes.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">04</span>
         <div class="pipe-content">
-          <div class="pipe-title">Test Generation Agent</div>
-          <div class="pipe-desc">Vitest (unit/component/integration) + Specwright → Playwright E2E from feature files + OWASP security scan.</div>
+          <div class="pipe-title">Test key journeys</div>
+          <div class="pipe-desc">Check core flows, edge cases, accessibility, security basics and release readiness.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">05</span>
         <div class="pipe-content">
-          <div class="pipe-title">UI/UX Research Agent</div>
-          <div class="pipe-desc">Heuristic evaluation (Nielsen's 10). Generates solution directions. Outputs PDF report + auto-applies fixes.</div>
+          <div class="pipe-title">Improve the interface</div>
+          <div class="pipe-desc">Review usability, wording, visual hierarchy and the moments where users can get stuck.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">06</span>
         <div class="pipe-content">
-          <div class="pipe-title">i18n Agent</div>
-          <div class="pipe-desc">Extracts all strings → translation keys. Auto-translates via DeepL / LibreTranslate. Validates RTL support.</div>
+          <div class="pipe-title">Prepare translations</div>
+          <div class="pipe-desc">Keep visible text structured so the product can support multiple markets.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">07</span>
         <div class="pipe-content">
-          <div class="pipe-title">Compliance Agent</div>
-          <div class="pipe-desc">Runs checklist: GDPR/AVG, WCAG 2.2, OWASP, ISO 27001 alignment. Generates compliance PDF.</div>
+          <div class="pipe-title">Check compliance</div>
+          <div class="pipe-desc">Review privacy, accessibility, security and operational evidence before launch.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">08</span>
         <div class="pipe-content">
-          <div class="pipe-title">CI/CD Agent</div>
-          <div class="pipe-desc">Generates .gitlab-ci.yml + Docker Compose + Coolify config. SSL, domain, monitoring automated.</div>
+          <div class="pipe-title">Prepare deployment</div>
+          <div class="pipe-desc">Package the product for hosting, monitoring and safe release approval.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">09</span>
         <div class="pipe-content">
-          <div class="pipe-title">Documentation Agent</div>
-          <div class="pipe-desc">README, Swagger API docs, user manual, changelog — human AND AI readable standard.</div>
+          <div class="pipe-title">Write handover docs</div>
+          <div class="pipe-desc">Create product notes, user guidance, API notes, runbooks and change history.</div>
         </div>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">10</span>
         <div class="pipe-content">
-          <div class="pipe-title">Launch Agent</div>
-          <div class="pipe-desc">Landing page + SEO (schema.org, sitemap) + payment integration (Mollie/Stripe/Paddle) + trial logic.</div>
+          <div class="pipe-title">Prepare launch</div>
+          <div class="pipe-desc">Set up landing copy, pricing, payments, onboarding and the first customer path.</div>
         </div>
       </div>
     </div>
@@ -801,88 +950,93 @@
   <div class="phase">
     <div class="phase-header">
       <span class="phase-num">PHASE 03</span>
-      <h2>Daily Digest & Exit</h2>
+      <h2>Opportunity review and handover</h2>
     </div>
 
-    <h3>Daily Opportunity Digest</h3>
+    <h3>Opportunity shortlist</h3>
     <div class="digest-preview">
-      <div class="digest-title">🔥 TOP 5 OPPORTUNITIES — [date]</div>
+      <div class="digest-title">TOP 5 PRODUCT OPPORTUNITIES - [date]</div>
       <div class="digest-item">#1 [Niche: Gym management NL]</div>
-      <div class="digest-meta">Problem: "Can't find affordable membership SW with iDEAL"</div>
-      <div class="digest-meta">Sources: Reddit r/fitness_nl (47 upvotes), Quora (3 similar)</div>
-      <div class="digest-score">Score: 8.4/10 | Est. TAM: €2.3M | Gap: MindBody (too expensive)</div>
-      <div class="digest-meta">Approach: Fork Gym OS (GitHub) → white-label → iDEAL + Mollie</div>
+      <div class="digest-meta">Problem: "We need affordable member management with iDEAL payments."</div>
+      <div class="digest-meta">Sources: niche forum thread, review sites and similar questions</div>
+      <div class="digest-score">Score: 8.4/10 | Estimated market: €2.3M | Why current tools fall short: price and local payments</div>
+      <div class="digest-meta">Approach: build a focused product with member records, payments and simple reporting</div>
       <div class="digest-actions">
-        <button class="btn btn-primary">✓ APPROVE & BUILD</button>
-        <button class="btn btn-secondary">⏸ SAVE FOR LATER</button>
-        <button class="btn btn-tertiary">✕ REJECT</button>
+        <button class="btn btn-primary">Start build</button>
+        <button class="btn btn-secondary">Save opportunity</button>
+        <button class="btn btn-tertiary">Dismiss</button>
       </div>
     </div>
 
-    <h3>Exit Automation Modules</h3>
+    <h3>Handover preparation</h3>
     <div class="card-grid">
       <div class="card">
-        <div class="card-icon">📊</div>
-        <div class="card-title">Valuation Agent</div>
-        <div class="card-desc">MRR × multiple research. Factors: churn, NPS, growth, code quality. Outputs valuation PDF.</div>
+        <div class="card-icon">01</div>
+        <div class="card-title">Valuation estimate</div>
+        <div class="card-desc">Summarize revenue, usage, growth, churn, product quality and operating risk.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🗂️</div>
-        <div class="card-title">Data Room Agent</div>
-        <div class="card-desc">Packages financials, user metrics, codebase overview, compliance certs on secure link.</div>
+        <div class="card-icon">02</div>
+        <div class="card-title">Buyer-ready documents</div>
+        <div class="card-desc">Package financials, product notes, user metrics, codebase overview and compliance evidence.</div>
       </div>
       <div class="card">
-        <div class="card-icon">📋</div>
-        <div class="card-title">Offer Agent</div>
-        <div class="card-desc">Generates offer templates. Matches product to buyers on Acquire.com / Flippa / PE firms.</div>
+        <div class="card-icon">03</div>
+        <div class="card-title">Offer materials</div>
+        <div class="card-desc">Prepare a clear product summary, buyer questions and deal support materials.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🤝</div>
-        <div class="card-title">Handover Agent</div>
-        <div class="card-desc">Transfers domain, hosting, repos, customer data (GDPR). Generates handover checklist + Loom walkthroughs.</div>
+        <div class="card-icon">04</div>
+        <div class="card-title">Transfer checklist</div>
+        <div class="card-desc">Document domains, hosting, repositories, customer data rules and owner handover steps.</div>
       </div>
     </div>
   </div>
 
-  <!-- AGENTS -->
+  <!-- WORKFLOWS -->
   <div class="phase">
     <div class="phase-header">
-      <span class="phase-num">AGENTS</span>
-      <h2>Multi-Agent System</h2>
+      <span class="phase-num">WORKFLOWS</span>
+      <h2>Specialist workflows</h2>
     </div>
-    <p style="color:var(--muted); margin-bottom: 20px;">Spawn these specialized agents. A Synthesizer Agent combines all outputs into the FORGE Blueprint.</p>
-    <div class="agents-grid">
-      <div class="agent-card"><div class="agent-name">Scout</div><div class="agent-role">Market research, trend analysis, problem discovery</div></div>
-      <div class="agent-card"><div class="agent-name">Architect</div><div class="agent-role">Software architecture, design patterns, ADRs</div></div>
-      <div class="agent-card"><div class="agent-name">Compliance Officer</div><div class="agent-role">GDPR, ISO, WCAG, OWASP, BIO</div></div>
-      <div class="agent-card"><div class="agent-name">Growth Hacker</div><div class="agent-role">GTM, pricing, acquisition channels, SEO</div></div>
-      <div class="agent-card"><div class="agent-name">Exit Strategist</div><div class="agent-role">M&A, valuations, deal structuring, acquisition</div></div>
-      <div class="agent-card"><div class="agent-name">Tech Selector</div><div class="agent-role">Package evaluation, stack decisions, licenses</div></div>
-      <div class="agent-card"><div class="agent-name">Brand Strategist</div><div class="agent-role">Naming, positioning, international messaging</div></div>
-      <div class="agent-card"><div class="agent-name">MplusKassa Analyst</div><div class="agent-role">POS/payment API integration opportunities</div></div>
-      <div class="agent-card"><div class="agent-name">Risk Agent</div><div class="agent-role">Security, license compliance, opacity risks</div></div>
-      <div class="agent-card"><div class="agent-name">Synthesizer</div><div class="agent-role">Combines all agent outputs → FORGE Blueprint doc</div></div>
+    <p style="color:var(--muted); margin-bottom: 20px;">FORGE coordinates focused workflows for research, product decisions, build quality, launch and handover.</p>
+    <div class="workflows-grid">
+      <div class="workflow-card"><div class="workflow-name">Market scout</div><div class="workflow-role">Finds trends, complaints and product gaps</div></div>
+      <div class="workflow-card"><div class="workflow-name">Product architect</div><div class="workflow-role">Turns scope into structure and decisions</div></div>
+      <div class="workflow-card"><div class="workflow-name">Compliance check</div><div class="workflow-role">Reviews privacy, accessibility and security evidence</div></div>
+      <div class="workflow-card"><div class="workflow-name">Growth strategy</div><div class="workflow-role">Shapes pricing, positioning and launch channels</div></div>
+      <div class="workflow-card"><div class="workflow-name">Handover strategy</div><div class="workflow-role">Prepares buyer review and transfer steps</div></div>
+      <div class="workflow-card"><div class="workflow-name">Technology review</div><div class="workflow-role">Checks packages, stack decisions and licenses</div></div>
+      <div class="workflow-card"><div class="workflow-name">Brand position</div><div class="workflow-role">Clarifies name, message and market fit</div></div>
+      <div class="workflow-card"><div class="workflow-name">Integration research</div><div class="workflow-role">Finds payment, POS, finance and CRM opportunities</div></div>
+      <div class="workflow-card"><div class="workflow-name">Risk review</div><div class="workflow-role">Checks security, dependency and operating risks</div></div>
+      <div class="workflow-card"><div class="workflow-name">Synthesis</div><div class="workflow-role">Combines findings into a clear product plan</div></div>
     </div>
   </div>
 
-  <!-- NAMES -->
+  <!-- FIT -->
   <div class="phase">
     <div class="phase-header">
-      <span class="phase-num">BRANDING</span>
-      <h2>Name Candidates</h2>
+      <span class="phase-num">FIT</span>
+      <h2>Who FORGE helps</h2>
     </div>
-    <p style="color:var(--muted); margin-bottom:20px;">Research each for .com/.io domain, EU/US trademark, social handles.</p>
-    <div class="names-grid">
-      <div class="name-chip">FORGE<div class="name-meaning">Build. Fire. Creation.</div></div>
-      <div class="name-chip">Foundry<div class="name-meaning">Factory of software</div></div>
-      <div class="name-chip">Anvil<div class="name-meaning">Where things are shaped</div></div>
-      <div class="name-chip">Crucible<div class="name-meaning">Tested under pressure</div></div>
-      <div class="name-chip">Archon<div class="name-meaning">Master builder</div></div>
-      <div class="name-chip">ORCA<div class="name-meaning">Orchestrated Rapid Code Automation</div></div>
-      <div class="name-chip">Stratum<div class="name-meaning">Layers of quality</div></div>
-      <div class="name-chip">Nexus Build<div class="name-meaning">Connect + build</div></div>
-      <div class="name-chip">Fabricate<div class="name-meaning">Systematic creation</div></div>
-      <div class="name-chip">Codex Engine<div class="name-meaning">Knowledge + build</div></div>
+    <p style="color:var(--muted); margin-bottom:20px;">FORGE is built for people who want software products with evidence, not loose demos.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">01</div>
+        <div class="card-title">Solo founders</div>
+        <div class="card-desc">Move from scattered ideas to validated product bets and launch-ready assets.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">02</div>
+        <div class="card-title">Agencies and operators</div>
+        <div class="card-desc">Package repeatable niche software for clients, resellers or internal teams.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">03</div>
+        <div class="card-title">Product teams</div>
+        <div class="card-desc">Use a tighter discovery-to-release loop with clearer decisions and handover notes.</div>
+      </div>
     </div>
   </div>
 
@@ -890,29 +1044,29 @@
   <div class="phase">
     <div class="phase-header">
       <span class="phase-num">OUTPUT</span>
-      <h2>Required Deliverables</h2>
+      <h2>What FORGE produces</h2>
     </div>
     <div class="deliverables">
-      <div class="deliverable"><span class="del-num">01</span><div class="del-text">Market Research Report (PDF-ready)</div></div>
-      <div class="deliverable"><span class="del-num">02</span><div class="del-text">FORGE Architecture Document + Mermaid diagrams</div></div>
-      <div class="deliverable"><span class="del-num">03</span><div class="del-text">SDLC Pipeline Specification</div></div>
-      <div class="deliverable"><span class="del-num">04</span><div class="del-text">Problem-Solution Matcher Spec</div></div>
-      <div class="deliverable"><span class="del-num">05</span><div class="del-text">Compliance Checklist per market (NL/EU/Gov/Int)</div></div>
-      <div class="deliverable"><span class="del-num">06</span><div class="del-text">Technology Decision Matrix</div></div>
-      <div class="deliverable"><span class="del-num">07</span><div class="del-text">Naming Shortlist + domain/trademark research</div></div>
-      <div class="deliverable"><span class="del-num">08</span><div class="del-text">90-Day MVP Roadmap</div></div>
-      <div class="deliverable"><span class="del-num">09</span><div class="del-text">Risk Framework + Code Quality Standards</div></div>
-      <div class="deliverable"><span class="del-num">10</span><div class="del-text">Exit Playbook — valuation to handover</div></div>
-      <div class="deliverable"><span class="del-num">11</span><div class="del-text">MplusKassa Integration Brief</div></div>
-      <div class="deliverable"><span class="del-num">12</span><div class="del-text">Daily Digest Prototype + automation design</div></div>
+      <div class="deliverable"><span class="del-num">01</span><div class="del-text">Market opportunity brief</div></div>
+      <div class="deliverable"><span class="del-num">02</span><div class="del-text">Product scope and user journeys</div></div>
+      <div class="deliverable"><span class="del-num">03</span><div class="del-text">Architecture notes and decisions</div></div>
+      <div class="deliverable"><span class="del-num">04</span><div class="del-text">Build plan and reviewable changes</div></div>
+      <div class="deliverable"><span class="del-num">05</span><div class="del-text">Tests for important flows</div></div>
+      <div class="deliverable"><span class="del-num">06</span><div class="del-text">Privacy, accessibility and security checklist</div></div>
+      <div class="deliverable"><span class="del-num">07</span><div class="del-text">Launch page and onboarding copy</div></div>
+      <div class="deliverable"><span class="del-num">08</span><div class="del-text">Pricing and payment setup</div></div>
+      <div class="deliverable"><span class="del-num">09</span><div class="del-text">User guide, runbook and change history</div></div>
+      <div class="deliverable"><span class="del-num">10</span><div class="del-text">Risk review and owner notes</div></div>
+      <div class="deliverable"><span class="del-num">11</span><div class="del-text">Buyer-ready handover package</div></div>
+      <div class="deliverable"><span class="del-num">12</span><div class="del-text">Opportunity review workflow</div></div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <span class="footer-logo">FORGE</span>
-    <span>MASTER PROMPT v1.0 — ONE FOUNDER × INFINITE AGENTS</span>
-    <span>BUILD → LAUNCH → EXIT → REPEAT</span>
+    <span>AI-assisted software product foundry</span>
+    <span>Discover → Validate → Build → Hand over</span>
   </div>
 
 </div>
