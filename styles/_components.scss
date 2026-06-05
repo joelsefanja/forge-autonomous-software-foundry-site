@@ -7,7 +7,7 @@
   align-items: center;
   gap: t.$space-3;
   font-family: t.$font-display;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.01em;
 
   .mark {
@@ -18,7 +18,7 @@
     color: t.$color-white;
     background: t.$color-ink;
     font-size: t.$text-brand;
-    font-weight: 900;
+    font-weight: 700;
     transform: rotate(-4deg);
     box-shadow: t.$press-offset t.$press-offset 0 t.$color-accent;
   }
@@ -49,7 +49,7 @@
       padding: t.$space-1 t.$space-2;
       background: t.$color-tape;
       color: t.$color-ink;
-      font-weight: 800;
+      font-weight: 700;
       text-decoration: none;
 
       &:hover,
@@ -63,9 +63,9 @@
 }
 
 .eyebrow {
-  @include m.mono-label;
+  font-weight: 700;
   width: fit-content;
-  margin: 0 0 t.$space-5;
+  margin: 0 0 t.$space-4;
   border: t.$border;
   border-radius: t.$radius-pill;
   padding: t.$space-2 t.$space-3;
@@ -76,7 +76,7 @@
 
 .lede {
   max-width: t.$content-lede;
-  margin-bottom: t.$space-5;
+  margin-bottom: t.$space-4;
   color: t.$color-muted;
   font-size: t.$lede-size;
   line-height: 1.45;
@@ -86,7 +86,7 @@
   display: grid;
   gap: t.$space-2;
   max-width: 39rem;
-  margin-bottom: t.$space-6;
+  margin-bottom: t.$space-5;
 
   span {
     position: relative;
@@ -120,13 +120,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: t.$space-12;
+  min-height: t.$space-10;
   border: t.$border;
   border-radius: t.$radius-pill;
   padding: 0 calc(t.$space-4 + t.$space-1 / 2);
   background: t.$color-tape;
   color: t.$color-ink;
-  font-weight: 800;
+  font-weight: 700;
   font-size: t.$text-small;
   text-decoration: none;
   transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
@@ -166,19 +166,14 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: t.$space-2;
   max-width: 42rem;
-  margin-top: t.$space-4;
+  margin-top: t.$space-3;
 
   .item {
     border: t.$soft-border;
     border-radius: t.$radius-soft;
     background: t.$color-surface;
     padding: t.$space-3;
-    transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
-
-    &:hover {
-      border-color: t.$color-accent;
-      background: t.$color-retro-panel;
-    }
+    transition: border-color 160ms ease, background-color 160ms ease;
   }
 
   span {
@@ -234,12 +229,7 @@
     border-radius: t.$radius-soft;
     background: color.adjust(t.$color-surface, $lightness: 2%);
     padding: t.$space-3;
-    transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
-
-    &:hover {
-      border-color: t.$color-accent;
-      background: t.$color-white;
-    }
+    transition: border-color 160ms ease, background-color 160ms ease;
   }
 
   .index {
@@ -251,14 +241,14 @@
     color: t.$color-on-accent;
     font-family: t.$font-mono;
     font-size: t.$text-label;
-    font-weight: 800;
+    font-weight: 700;
     border-radius: t.$radius-soft;
   }
 
   .title {
     margin-bottom: calc(t.$space-1 / 2);
     font-size: t.$text-title;
-    font-weight: 850;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 
@@ -367,10 +357,6 @@
     border-bottom: t.$soft-border;
     transition: background-color 160ms ease;
 
-    &:hover {
-      background: t.$color-accent-soft;
-    }
-
     &:last-child {
       border-bottom: 0;
     }
@@ -379,11 +365,11 @@
   .num {
     color: t.$color-accent;
     font-family: t.$font-mono;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .title {
-    font-weight: 850;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 
@@ -409,15 +395,10 @@
     border: t.$soft-border;
     border-radius: t.$radius-soft;
     padding: t.$space-5;
-    transition: transform 160ms ease, background-color 160ms ease;
+    transition: background-color 160ms ease;
 
     &:nth-child(2n) {
       background: color.mix(t.$color-surface, t.$color-accent-soft, 72%);
-    }
-
-    &:hover {
-      transform: translateY(t.$motion-lift);
-      background: t.$color-white;
     }
 
   }
@@ -428,13 +409,13 @@
     color: t.$color-accent;
     font-family: t.$font-mono;
     font-size: t.$text-label;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .title {
     margin-bottom: t.$space-2;
     font-size: t.$text-title;
-    font-weight: 850;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 
@@ -464,7 +445,7 @@
     margin-bottom: t.$space-2;
     color: t.$color-ink;
     font-size: t.$text-title;
-    font-weight: 850;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 
@@ -481,10 +462,10 @@
   gap: t.$space-8;
   align-items: end;
   border: t.$border;
-  background-color: t.$color-retro-panel-strong;
-  background-image: linear-gradient(90deg, rgba(t.$color-ink, 0.045) t.$line-unit, transparent t.$line-unit),
-    linear-gradient(180deg, rgba(t.$color-ink, 0.04) t.$line-unit, transparent t.$line-unit),
-    radial-gradient(circle at 88% 12%, rgba(t.$color-accent, 0.18), transparent 32%);
+  background-color: t.$color-accent-soft;
+  background-image: linear-gradient(90deg, rgba(t.$color-ink, 0.028) t.$line-unit, transparent t.$line-unit),
+    linear-gradient(180deg, rgba(t.$color-ink, 0.024) t.$line-unit, transparent t.$line-unit),
+    radial-gradient(circle at 88% 12%, rgba(t.$color-tape, 0.22), transparent 32%);
   background-size: t.$space-4 t.$space-4, t.$space-4 t.$space-4, auto;
   color: t.$color-ink;
   padding: t.$cta-pad;

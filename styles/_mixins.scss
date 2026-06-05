@@ -2,9 +2,9 @@
 
 @mixin mono-label {
   font-family: t.$font-mono;
-  font-size: t.$text-label;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 

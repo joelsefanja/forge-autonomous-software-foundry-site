@@ -15,7 +15,7 @@
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.84fr);
+  grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.72fr);
   gap: t.$hero-gap;
   align-items: center;
   min-height: t.$hero-height;
@@ -33,9 +33,9 @@
   > .head {
     display: grid;
     grid-template-columns: t.$section-index-column minmax(0, 1fr);
-    gap: t.$space-8;
+    gap: t.$grid-size;
     align-items: start;
-    margin-bottom: t.$space-7;
+    margin-bottom: t.$space-6;
   }
 
   .index {
@@ -50,7 +50,7 @@
     box-shadow: t.$press-offset t.$press-offset 0 t.$color-ink;
     font-family: t.$font-mono;
     font-size: t.$text-section-index;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .intro {

@@ -12,9 +12,9 @@ html {
 body {
   margin: 0;
   color: t.$color-ink;
-  background: linear-gradient(90deg, rgba(t.$color-ink, 0.045) t.$line-unit, transparent t.$line-unit),
-    linear-gradient(180deg, rgba(t.$color-ink, 0.035) t.$line-unit, transparent t.$line-unit),
-    radial-gradient(circle at 50% 45%, rgba(t.$color-white, 0.82) 0, rgba(t.$color-bg, 0.9) 42%, rgba(t.$color-ink, 0.1) 100%),
+  background: linear-gradient(90deg, rgba(t.$color-ink, 0.026) t.$line-unit, transparent t.$line-unit),
+    linear-gradient(180deg, rgba(t.$color-ink, 0.022) t.$line-unit, transparent t.$line-unit),
+    radial-gradient(circle at 50% 36%, rgba(t.$color-white, 0.84) 0, rgba(t.$color-bg, 0.94) 48%, rgba(t.$color-ink, 0.045) 100%),
     t.$color-bg;
   background-size: t.$grid-size t.$grid-size, t.$grid-size t.$grid-size, auto, auto;
   font-family: t.$font-sans;
@@ -45,7 +45,7 @@ h1 {
   margin-bottom: t.$space-4;
   font-size: t.$hero-title;
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.035em;
 }
 
 h2 {
@@ -54,7 +54,7 @@ h2 {
   margin-bottom: calc(t.$space-3 + t.$space-1);
   font-size: t.$section-title;
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.032em;
 }
 
 h3 {
@@ -62,5 +62,9 @@ h3 {
   margin-bottom: calc(t.$space-3 + t.$space-1);
   font-size: clamp(1.4rem, 2vw, 2.1rem);
   line-height: 1.12;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
+}
+
+section {
+  scroll-margin-top: t.$space-6;
 }
