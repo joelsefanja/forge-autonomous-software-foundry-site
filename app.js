@@ -1,6 +1,7 @@
 import { animate, hover, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.40.0/+esm';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let activeScrollAnimation;
 
 const focusSection = (target) => {
   const previousTabIndex = target.getAttribute('tabindex');
@@ -12,6 +13,42 @@ const focusSection = (target) => {
   } else {
     target.setAttribute('tabindex', previousTabIndex);
   }
+};
+
+const getTargetY = (target) => {
+  const offset = 24;
+  return Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset);
+};
+
+const moveToAnchor = async (link, target, href) => {
+  if (activeScrollAnimation) {
+    activeScrollAnimation.stop();
+  }
+
+  if (prefersReducedMotion) {
+    window.scrollTo(0, getTargetY(target));
+    window.history.pushState(null, '', href);
+    focusSection(target);
+    return;
+  }
+
+  await animate(link, { y: [0, 4, -2, 0] }, { duration: 0.24, easing: [0.22, 1, 0.36, 1] }).finished;
+
+  const startY = window.scrollY;
+  const targetY = getTargetY(target);
+  const distance = Math.abs(targetY - startY);
+  const duration = Math.min(1.05, Math.max(0.62, distance / 5600));
+
+  activeScrollAnimation = animate(startY, targetY, {
+    duration,
+    easing: [0.22, 1, 0.36, 1],
+    onUpdate: (latest) => window.scrollTo(0, latest),
+  });
+
+  await activeScrollAnimation.finished;
+  activeScrollAnimation = undefined;
+  window.history.pushState(null, '', href);
+  focusSection(target);
 };
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -29,10 +66,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
 
     event.preventDefault();
-    target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-    window.history.pushState(null, '', href);
-
-    window.setTimeout(() => focusSection(target), prefersReducedMotion ? 0 : 650);
+    moveToAnchor(link, target, href);
   });
 });
 
