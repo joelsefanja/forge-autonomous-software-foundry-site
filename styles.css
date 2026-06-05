@@ -127,7 +127,7 @@ h3 {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 1px;
   border: 1px solid #211d18;
-  background: #211d18;
+  background: #d8d0c2;
 }
 
 .footer {
@@ -248,8 +248,8 @@ h3 {
   border: 1px solid #211d18;
   border-radius: 999px;
   padding: 0 1.125rem;
-  background: #211d18;
-  color: #ffffff;
+  background: #ffd166;
+  color: #211d18;
   font-weight: 800;
   font-size: 1rem;
   text-decoration: none;
@@ -258,7 +258,7 @@ h3 {
 .button:hover, .button:focus-visible {
   transform: translateY(-0.125rem);
   background: #ff5c00;
-  color: #ffffff;
+  color: #211d18;
 }
 .button:active {
   transform: translate(0.25rem, 0.25rem);
@@ -281,7 +281,7 @@ h3 {
   border: 1px solid #211d18;
   border-radius: 0.625rem;
   background: #fffaf1;
-  box-shadow: 0.625rem 0.625rem 0 #211d18;
+  box-shadow: 0.625rem 0.625rem 0 #c7773e;
   overflow: hidden;
 }
 .board .head {
@@ -376,15 +376,17 @@ h3 {
   padding: clamp(1.5rem, 4vw, 2.5rem);
 }
 .panel.inverse {
-  color: #ffffff;
-  background: #2d271f;
+  color: #211d18;
+  background-color: #fff0dc;
+  background-image: radial-gradient(circle at 0.125rem 0.125rem, rgba(33, 29, 24, 0.12) 0.0625rem, transparent 0.0875rem), repeating-linear-gradient(135deg, rgba(255, 92, 0, 0.11) 0 0.0625rem, transparent 0.0625rem 0.75rem);
+  background-size: 0.875rem 0.875rem, 1.5rem 1.5rem;
 }
 .panel.inverse p,
 .panel.inverse .row span {
-  color: rgb(252.48, 251.08, 248.56);
+  color: #5e5b55;
 }
 .panel.inverse .row b {
-  color: #ffffff;
+  color: #211d18;
 }
 .panel .label {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
@@ -467,7 +469,7 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   border: 1px solid #211d18;
-  background: #211d18;
+  background: #d8d0c2;
 }
 .deliverables .item {
   min-height: 11.25rem;
@@ -507,7 +509,7 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   border: 1px solid #211d18;
-  background: #211d18;
+  background: #d8d0c2;
 }
 .faq .item {
   background: #fffaf1;
@@ -532,26 +534,28 @@ h3 {
   gap: 2rem;
   align-items: end;
   border: 1px solid #211d18;
-  background: #2d271f;
-  color: #ffffff;
+  background-color: #ffe3bd;
+  background-image: linear-gradient(90deg, rgba(33, 29, 24, 0.045) 1px, transparent 1px), linear-gradient(180deg, rgba(33, 29, 24, 0.04) 1px, transparent 1px), radial-gradient(circle at 88% 12%, rgba(255, 92, 0, 0.18), transparent 32%);
+  background-size: 1rem 1rem, 1rem 1rem, auto;
+  color: #211d18;
   padding: clamp(1.75rem, 5vw, 3.5rem);
 }
 .cta h2 {
   max-width: 47.5rem;
-  color: #ffffff;
+  color: #211d18;
 }
 .cta p {
   max-width: 42rem;
-  color: rgb(252.48, 251.08, 248.56);
+  color: #5e5b55;
 }
 .cta .button {
-  border-color: #ffffff;
-  background: #ffffff;
+  border-color: #211d18;
+  background: #ff5c00;
   color: #211d18;
 }
 .cta .button.secondary {
   background: transparent;
-  color: #ffffff;
+  color: #211d18;
 }
 .cta .button.secondary:hover, .cta .button.secondary:focus-visible {
   background: #ffffff;
@@ -574,7 +578,7 @@ h3 {
     flex-wrap: wrap;
   }
   .board {
-    box-shadow: 0.5rem 0.5rem 0 #211d18;
+    box-shadow: 0.5rem 0.5rem 0 #c7773e;
   }
   .process .row {
     grid-template-columns: 4.5rem 1fr;

@@ -109,8 +109,8 @@
   border: t.$border;
   border-radius: t.$radius-pill;
   padding: 0 calc(t.$space-4 + t.$space-1 / 2);
-  background: t.$color-ink;
-  color: t.$color-white;
+  background: t.$color-tape;
+  color: t.$color-ink;
   font-weight: 800;
   font-size: t.$text-small;
   text-decoration: none;
@@ -120,7 +120,7 @@
   &:focus-visible {
     transform: translateY(t.$motion-lift);
     background: t.$color-accent;
-    color: t.$color-white;
+    color: t.$color-ink;
   }
 
   &:active {
@@ -251,16 +251,19 @@
   padding: t.$panel-pad;
 
   &.inverse {
-    color: t.$color-white;
-    background: t.$color-dark-surface;
+    color: t.$color-ink;
+    background-color: t.$color-retro-panel;
+    background-image: radial-gradient(circle at 0.125rem 0.125rem, rgba(t.$color-ink, 0.12) 0.0625rem, transparent 0.0875rem),
+      repeating-linear-gradient(135deg, rgba(t.$color-accent, 0.11) 0 0.0625rem, transparent 0.0625rem 0.75rem);
+    background-size: 0.875rem 0.875rem, 1.5rem 1.5rem;
 
     p,
     .row span {
-      color: color.mix(t.$color-white, t.$color-bg, 72%);
+      color: t.$color-muted;
     }
 
     .row b {
-      color: t.$color-white;
+      color: t.$color-ink;
     }
   }
 
@@ -352,7 +355,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: t.$line-unit;
   border: t.$border;
-  background: t.$color-ink;
+  background: t.$color-line;
 
   .item {
     min-height: t.$deliverable-min-height;
@@ -399,7 +402,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: t.$line-unit;
   border: t.$border;
-  background: t.$color-ink;
+  background: t.$color-line;
 
   .item {
     background: t.$color-surface;
@@ -427,28 +430,32 @@
   gap: t.$space-8;
   align-items: end;
   border: t.$border;
-  background: t.$color-dark-surface;
-  color: t.$color-white;
+  background-color: t.$color-retro-panel-strong;
+  background-image: linear-gradient(90deg, rgba(t.$color-ink, 0.045) t.$line-unit, transparent t.$line-unit),
+    linear-gradient(180deg, rgba(t.$color-ink, 0.04) t.$line-unit, transparent t.$line-unit),
+    radial-gradient(circle at 88% 12%, rgba(t.$color-accent, 0.18), transparent 32%);
+  background-size: t.$space-4 t.$space-4, t.$space-4 t.$space-4, auto;
+  color: t.$color-ink;
   padding: t.$cta-pad;
 
   h2 {
     max-width: t.$content-cta-title;
-    color: t.$color-white;
+    color: t.$color-ink;
   }
 
   p {
     max-width: t.$content-cta-copy;
-    color: color.mix(t.$color-white, t.$color-bg, 72%);
+    color: t.$color-muted;
   }
 
   .button {
-    border-color: t.$color-white;
-    background: t.$color-white;
+    border-color: t.$color-ink;
+    background: t.$color-accent;
     color: t.$color-ink;
 
     &.secondary {
       background: transparent;
-      color: t.$color-white;
+      color: t.$color-ink;
 
       &:hover,
       &:focus-visible {
