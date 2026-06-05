@@ -14,8 +14,9 @@ body {
   color: t.$color-ink;
   background: linear-gradient(90deg, rgba(t.$color-ink, 0.045) t.$line-unit, transparent t.$line-unit),
     linear-gradient(180deg, rgba(t.$color-ink, 0.035) t.$line-unit, transparent t.$line-unit),
+    radial-gradient(circle at 50% 45%, rgba(t.$color-white, 0.82) 0, rgba(t.$color-bg, 0.9) 42%, rgba(t.$color-ink, 0.1) 100%),
     t.$color-bg;
-  background-size: t.$space-18 t.$space-18;
+  background-size: t.$grid-size t.$grid-size, t.$grid-size t.$grid-size, auto, auto;
   font-family: t.$font-sans;
   font-size: t.$space-4;
   line-height: 1.6;

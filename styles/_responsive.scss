@@ -43,7 +43,7 @@
 
 @media (max-width: t.$breakpoint-mobile) {
   body {
-    background-size: t.$mobile-grid t.$mobile-grid;
+    background-size: t.$mobile-grid t.$mobile-grid, t.$mobile-grid t.$mobile-grid, auto, auto;
   }
 
   .page {
