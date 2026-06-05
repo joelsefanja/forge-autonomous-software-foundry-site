@@ -1,0 +1,16 @@
+@use "tokens" as t;
+
+@mixin mono-label {
+  font-family: t.$font-mono;
+  font-size: t.$text-label;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@mixin title-tight {
+  font-family: t.$font-display;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}

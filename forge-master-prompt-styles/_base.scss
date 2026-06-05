@@ -1,0 +1,65 @@
+@use "tokens" as t;
+@use "mixins" as m;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: t.$color-ink;
+  background: linear-gradient(90deg, rgba(t.$color-ink, 0.045) t.$line-unit, transparent t.$line-unit),
+    linear-gradient(180deg, rgba(t.$color-ink, 0.035) t.$line-unit, transparent t.$line-unit),
+    t.$color-bg;
+  background-size: t.$space-18 t.$space-18;
+  font-family: t.$font-sans;
+  font-size: t.$space-4;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: t.$color-tape;
+  color: t.$color-ink;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  @include m.title-tight;
+  max-width: t.$content-hero;
+  margin-bottom: t.$space-6;
+  font-size: t.$hero-title;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  @include m.title-tight;
+  max-width: t.$content-heading;
+  margin-bottom: calc(t.$space-3 + t.$space-1);
+  font-size: t.$section-title;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  font-family: t.$font-display;
+  margin-bottom: calc(t.$space-3 + t.$space-1);
+  font-size: clamp(1.4rem, 2vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
