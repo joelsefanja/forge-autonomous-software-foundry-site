@@ -118,7 +118,7 @@
   &:focus-visible {
     transform: translateY(t.$motion-lift);
     background: t.$color-accent;
-    color: t.$color-ink;
+    color: t.$color-on-accent;
   }
 
   &:active {
@@ -194,7 +194,7 @@
     width: t.$flow-index-size;
     height: t.$flow-index-size;
     background: t.$color-accent;
-    color: t.$color-white;
+    color: t.$color-on-accent;
     font-family: t.$font-mono;
     font-size: t.$text-label;
     font-weight: 800;
@@ -448,7 +448,7 @@
   .button {
     border-color: t.$color-ink;
     background: t.$color-accent;
-    color: t.$color-ink;
+    color: t.$color-on-accent;
 
     &.secondary {
       background: t.$color-surface;
