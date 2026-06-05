@@ -171,6 +171,7 @@ if (precheckForm) {
 
     const nextChecks = [
       buyer >= 10 ? 'Confirm who pays or approves.' : 'Find the buyer or approver first.',
+      'Check existing tools, APIs or workflows before custom build.',
       scope >= 10 ? 'Define the exact version-one workflow.' : 'Cut the idea to one buyer, one job and one outcome.',
       proof >= 10 ? 'Review risks before build.' : 'Collect more proof before build.',
     ];
@@ -198,6 +199,7 @@ if (precheckForm) {
       `Buyer: ${getSelectedLabel(precheckForm, 'buyer')}`,
       `Workaround pain: ${getSelectedLabel(precheckForm, 'pain')}`,
       `Version 1: ${getSelectedLabel(precheckForm, 'scope')}`,
+      'Reuse/integration check: Which existing tool, API or workflow could solve this first?',
       '',
       'Customer problem:',
       'Current workaround:',
