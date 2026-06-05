@@ -19,6 +19,7 @@
     background: t.$color-ink;
     font-size: t.$text-brand;
     font-weight: 900;
+    border-radius: t.$radius-soft;
     transform: rotate(-4deg);
     box-shadow: t.$press-offset t.$press-offset 0 t.$color-accent;
   }
@@ -82,11 +83,12 @@
     &::before {
       content: "";
       position: absolute;
-      top: 1rem;
+      top: 0.35rem;
       left: 0;
       width: t.$space-3;
       height: t.$space-3;
       border: t.$border;
+      border-radius: calc(t.$radius-soft / 2);
       background: t.$color-accent;
       box-shadow: 0.125rem 0.125rem 0 t.$color-ink;
     }
@@ -199,7 +201,7 @@
     font-family: t.$font-mono;
     font-size: t.$text-label;
     font-weight: 800;
-    border-radius: calc(t.$radius-soft / 2);
+    border-radius: t.$radius-soft;
   }
 
   .title {

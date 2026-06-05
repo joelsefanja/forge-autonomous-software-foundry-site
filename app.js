@@ -26,7 +26,9 @@
     }
   };
 
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  const scrollLinks = document.querySelectorAll('a[href^="#"]');
+
+  scrollLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       const href = link.getAttribute('href');
 
@@ -43,7 +45,7 @@
       event.preventDefault();
 
       if (prefersReducedMotion || !window.ScrollToPlugin) {
-        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
         focusSection(target);
         window.history.pushState(null, '', href);
         return;

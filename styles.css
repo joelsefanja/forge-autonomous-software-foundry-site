@@ -106,7 +106,7 @@ h3 {
   align-self: start;
   white-space: nowrap;
   border: 1px solid #211d18;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   padding: calc(0.25rem + 1px) 0.5rem;
   color: #ffffff;
   background: #ff5c00;
@@ -160,6 +160,7 @@ h3 {
   background: #211d18;
   font-size: 0.875rem;
   font-weight: 900;
+  border-radius: 0.5rem;
   transform: rotate(-4deg);
   box-shadow: 0.25rem 0.25rem 0 #ff5c00;
 }
@@ -191,7 +192,7 @@ h3 {
   width: fit-content;
   margin: 0 0 1.25rem;
   border: 1px solid #211d18;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
   color: #211d18;
   background: #ffe0cc;
@@ -223,11 +224,12 @@ h3 {
 .situations span::before {
   content: "";
   position: absolute;
-  top: 1rem;
+  top: 0.35rem;
   left: 0;
   width: 0.75rem;
   height: 0.75rem;
   border: 1px solid #211d18;
+  border-radius: 0.25rem;
   background: #ff5c00;
   box-shadow: 0.125rem 0.125rem 0 #211d18;
 }
@@ -245,7 +247,7 @@ h3 {
   justify-content: center;
   min-height: 3rem;
   border: 1px solid #211d18;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   padding: 0 1.125rem;
   background: #ffd166;
   color: #211d18;
@@ -278,7 +280,7 @@ h3 {
 
 .board {
   border: 1px solid #211d18;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   background: #fffaf1;
   box-shadow: 0.625rem 0.625rem 0 #c7773e;
   overflow: hidden;
@@ -312,7 +314,7 @@ h3 {
   gap: 1rem;
   align-items: start;
   border: 1px solid #d8d0c2;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   background: rgb(255, 253.6428571429, 251.2);
   padding: 0.75rem;
   transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
@@ -331,7 +333,7 @@ h3 {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
   font-size: 0.875rem;
   font-weight: 800;
-  border-radius: 0.3125rem;
+  border-radius: 0.5rem;
 }
 .flow .title {
   margin-bottom: 0.125rem;
@@ -353,7 +355,7 @@ h3 {
 }
 .metrics .metric {
   border: 1px solid #d8d0c2;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   padding: 0.75rem;
 }
 .metrics .metric strong {
@@ -376,7 +378,7 @@ h3 {
   display: block;
   width: 100%;
   border: 1px solid #d8d0c2;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   background: #f6f1e8;
 }
 
@@ -403,7 +405,7 @@ h3 {
   text-transform: uppercase;
   width: fit-content;
   border: 1px solid #211d18;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   padding: calc(0.25rem + 1px) 0.5rem;
   margin-bottom: 1.125rem;
   color: #211d18;
@@ -481,7 +483,7 @@ h3 {
   min-height: 10.5rem;
   background: #fffaf1;
   border: 1px solid #d8d0c2;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   padding: 1.25rem;
   transition: transform 160ms ease, background-color 160ms ease;
 }
@@ -522,7 +524,7 @@ h3 {
 }
 .faq .item {
   border: 1px solid #d8d0c2;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   background: #fffaf1;
   padding: 1.25rem;
 }
