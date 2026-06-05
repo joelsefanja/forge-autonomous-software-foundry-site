@@ -65,29 +65,31 @@
   line-height: 1.45;
 }
 
-.proofline {
-  display: flex;
-  flex-wrap: wrap;
-  width: fit-content;
+.situations {
+  display: grid;
+  max-width: 39rem;
   margin-bottom: t.$space-6;
-  border: t.$border;
-  background: t.$color-ink;
+  border-top: t.$soft-border;
 
   span {
-    padding: t.$space-2 t.$space-3;
-    border-right: t.$border;
-    border-color: t.$color-ink;
-    background: t.$color-surface;
+    position: relative;
+    padding: t.$space-2 0 t.$space-2 t.$space-6;
+    border-bottom: t.$soft-border;
     color: t.$color-ink;
-    font-family: t.$font-mono;
-    font-size: t.$text-label;
-    font-weight: 800;
-    line-height: 1.2;
-    text-transform: uppercase;
+    font-size: t.$text-small;
+    font-weight: 700;
+    line-height: 1.35;
 
-    &:last-child {
-      border-right: 0;
-      background: t.$color-tape;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      width: t.$space-3;
+      height: t.$space-3;
+      border: t.$border;
+      background: t.$color-accent;
+      box-shadow: 0.125rem 0.125rem 0 t.$color-ink;
     }
   }
 }

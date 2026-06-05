@@ -116,7 +116,7 @@
     });
   });
 
-  document.querySelectorAll('.proofline span, .metric').forEach((element) => {
+  document.querySelectorAll('.situations span, .metric').forEach((element) => {
     element.addEventListener('pointerenter', () => {
       gsapInstance.to(element, {
         scale: 1.035,

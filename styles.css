@@ -206,29 +206,31 @@ h3 {
   line-height: 1.45;
 }
 
-.proofline {
-  display: flex;
-  flex-wrap: wrap;
-  width: fit-content;
+.situations {
+  display: grid;
+  max-width: 39rem;
   margin-bottom: 1.5rem;
-  border: 1px solid #211d18;
-  background: #211d18;
+  border-top: 1px solid #d8d0c2;
 }
-.proofline span {
-  padding: 0.5rem 0.75rem;
-  border-right: 1px solid #211d18;
-  border-color: #211d18;
-  background: #fffaf1;
+.situations span {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  border-bottom: 1px solid #d8d0c2;
   color: #211d18;
-  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.875rem;
-  font-weight: 800;
-  line-height: 1.2;
-  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
-.proofline span:last-child {
-  border-right: 0;
-  background: #ffd166;
+.situations span::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1px solid #211d18;
+  background: #ff5c00;
+  box-shadow: 0.125rem 0.125rem 0 #211d18;
 }
 
 .actions {
