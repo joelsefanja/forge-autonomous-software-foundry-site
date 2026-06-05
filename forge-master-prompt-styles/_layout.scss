@@ -40,6 +40,7 @@
 
   .index {
     width: fit-content;
+    white-space: nowrap;
     border: t.$border;
     border-radius: t.$radius-pill;
     padding: calc(t.$space-1 + t.$line-unit) t.$space-2;

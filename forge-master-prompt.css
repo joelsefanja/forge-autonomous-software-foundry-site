@@ -103,6 +103,7 @@ h3 {
 }
 .section .index {
   width: fit-content;
+  white-space: nowrap;
   border: 1px solid #111111;
   border-radius: 999px;
   padding: calc(0.25rem + 1px) 0.5rem;
