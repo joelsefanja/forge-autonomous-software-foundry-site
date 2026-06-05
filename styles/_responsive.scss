@@ -5,6 +5,7 @@
   .hero,
   .section > .head,
   .split,
+  .precheck-grid,
   .cta {
     grid-template-columns: 1fr;
   }
@@ -20,6 +21,10 @@
 
   .board {
     box-shadow: t.$shadow-board-mobile;
+  }
+
+  .precheck-result {
+    position: static;
   }
 
   .process {
@@ -112,6 +117,16 @@
 
     .num {
       margin-bottom: t.$nav-gap;
+    }
+  }
+
+  .precheck-form {
+    fieldset {
+      grid-template-columns: 1fr;
+    }
+
+    .button {
+      width: 100%;
     }
   }
 }

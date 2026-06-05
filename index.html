@@ -21,9 +21,9 @@
       <nav class="nav" aria-label="Main navigation">
         <a href="#how">How it works</a>
         <a href="#proof">Proof</a>
-        <a href="#outputs">What you get</a>
+        <a href="#precheck">Precheck</a>
         <a href="#fit">Fit</a>
-        <a class="nav-action" href="#fit-check">Start check</a>
+        <a class="nav-action" href="#precheck">Start check</a>
       </nav>
     </header>
 
@@ -39,7 +39,7 @@
             <span>A future owner must understand the code and decisions.</span>
           </div>
           <div class="actions">
-            <a class="button" href="#fit-check">Check the idea</a>
+            <a class="button" href="#precheck">Check the idea</a>
           </div>
           <p class="note">No polished deck needed. A rough customer problem is enough. <a href="#outputs">See what you get.</a></p>
         </div>
@@ -87,9 +87,92 @@
         </aside>
       </section>
 
+      <section class="section precheck" id="precheck" aria-labelledby="precheck-title">
+        <div class="head">
+          <div class="index">01 / Precheck</div>
+          <div>
+            <h2 id="precheck-title">Check if this should be built.</h2>
+            <p class="intro">Answer five questions. You get a first-pass recommendation: build it, make it smaller, prove more or stop.</p>
+          </div>
+        </div>
+
+        <div class="precheck-grid">
+          <form class="precheck-form" aria-describedby="precheck-privacy">
+            <p id="precheck-privacy" class="privacy-note">Keep it general. Do not enter customer names, credentials, private contracts, source code or sensitive personal data.</p>
+
+            <fieldset>
+              <legend>How often has this problem come up?</legend>
+              <label><input type="radio" name="repetition" value="0" required> Once</label>
+              <label><input type="radio" name="repetition" value="8"> 2-3 times</label>
+              <label><input type="radio" name="repetition" value="15"> 4-10 times</label>
+              <label><input type="radio" name="repetition" value="20"> More than 10 times</label>
+            </fieldset>
+
+            <fieldset>
+              <legend>What proof do you have?</legend>
+              <label><input type="checkbox" name="proof" value="5"> Customer asks</label>
+              <label><input type="checkbox" name="proof" value="8"> Paid or manual workaround</label>
+              <label><input type="checkbox" name="proof" value="5"> Support tickets or repeated notes</label>
+              <label><input type="checkbox" name="proof" value="7"> Budget, deadline or compliance pressure</label>
+              <label><input type="checkbox" name="proof" value="0" data-none> None yet</label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Who would pay or approve this?</legend>
+              <label><input type="radio" name="buyer" value="15" required> Named buyer</label>
+              <label><input type="radio" name="buyer" value="10"> Likely role</label>
+              <label><input type="radio" name="buyer" value="7"> Internal owner</label>
+              <label><input type="radio" name="buyer" value="0" data-unclear> Unclear</label>
+            </fieldset>
+
+            <fieldset>
+              <legend>How painful is the current workaround?</legend>
+              <label><input type="radio" name="pain" value="3" required> Mostly annoying</label>
+              <label><input type="radio" name="pain" value="8"> Hours per month</label>
+              <label><input type="radio" name="pain" value="12"> Days per month</label>
+              <label><input type="radio" name="pain" value="15"> Revenue, compliance or support risk</label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Can version 1 serve one buyer, one job and one outcome?</legend>
+              <label><input type="radio" name="scope" value="15" required> Yes</label>
+              <label><input type="radio" name="scope" value="10"> Mostly</label>
+              <label><input type="radio" name="scope" value="4"> Not yet</label>
+              <label><input type="radio" name="scope" value="0" data-broad> No, it is broad</label>
+            </fieldset>
+
+            <button class="button" type="submit">Show recommendation</button>
+          </form>
+
+          <aside class="precheck-result" aria-live="polite" aria-label="Precheck result">
+            <div class="label">First-pass result</div>
+            <h3 data-result-title>Answer the questions.</h3>
+            <p data-result-copy>The check looks for repeated pain, buyer clarity, proof, workaround cost and a narrow version 1.</p>
+            <div class="score"><span data-result-score>0</span><span>/ 90</span></div>
+            <div class="result-list">
+              <div>
+                <strong>Strong signals</strong>
+                <ul data-result-strong>
+                  <li>Repeated customer pain.</li>
+                </ul>
+              </div>
+              <div>
+                <strong>FORGE would check next</strong>
+                <ol data-result-next>
+                  <li>Who pays or approves?</li>
+                  <li>What is the smallest useful workflow?</li>
+                  <li>Which risks must be handled before build?</li>
+                </ol>
+              </div>
+            </div>
+            <a class="button secondary" data-result-mail href="mailto:?subject=FORGE%20idea%20precheck&body=Idea%20precheck%20result:%0A">Prepare check email</a>
+          </aside>
+        </div>
+      </section>
+
       <section class="section" id="how" aria-labelledby="how-title">
         <div class="head">
-          <div class="index">01 / First step</div>
+          <div class="index">02 / First step</div>
           <div>
             <h2 id="how-title">Start with one clear question: should this be built?</h2>
             <p class="intro">The first step turns customer demand into a plain recommendation before more time and budget are spent.</p>
@@ -137,7 +220,7 @@
 
       <section class="section" id="proof" aria-labelledby="proof-title">
         <div class="head">
-          <div class="index">02 / Proof</div>
+          <div class="index">03 / Proof</div>
           <div>
             <h2 id="proof-title">Most software risk appears before the build starts.</h2>
             <p class="intro">FORGE checks whether the problem is specific, repeated and worth solving. If the signal is weak, the right answer may be to narrow or stop.</p>
@@ -166,7 +249,7 @@
 
       <section class="section" id="process" aria-labelledby="process-title">
         <div class="head">
-          <div class="index">03 / Process</div>
+          <div class="index">04 / Process</div>
           <div>
             <h2 id="process-title">From customer signal to reviewable software.</h2>
             <p class="intro">Each step produces a concrete artifact, so founders, builders and buyers can see what was learned, what changed and why the product is ready to build or stop.</p>
@@ -214,7 +297,7 @@
 
       <section class="section" id="outputs" aria-labelledby="outputs-title">
         <div class="head">
-          <div class="index">04 / What you get</div>
+          <div class="index">05 / What you get</div>
           <div>
             <h2 id="outputs-title">What you can review before you commit further.</h2>
             <p class="intro">FORGE delivers more than source code: proof, version-one decisions, quality notes and owner context needed to launch, transfer or decide what happens next.</p>
@@ -268,7 +351,7 @@
 
       <section class="section" id="fit" aria-labelledby="fit-title">
         <div class="head">
-          <div class="index">05 / Fit</div>
+          <div class="index">06 / Fit</div>
           <div>
             <h2 id="fit-title">For teams that need confidence before build speed.</h2>
             <p class="intro">FORGE fits when the first product must be narrow, explainable and transferable, not just impressive in a demo.</p>
@@ -296,7 +379,7 @@
 
       <section class="section" id="faq" aria-labelledby="faq-title">
         <div class="head">
-          <div class="index">06 / Questions</div>
+          <div class="index">07 / Questions</div>
           <div>
             <h2 id="faq-title">The buyer questions FORGE should answer early.</h2>
             <p class="intro">The process is designed to reduce uncertainty before a build becomes expensive or hard to transfer.</p>
