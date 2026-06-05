@@ -1,1074 +1,824 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FORGE — Software Product Foundry</title>
-<meta name="description" content="FORGE helps turn validated market problems into shipped, documented and handover-ready software products.">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
-
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --border: #1e1e2e;
-    --accent: #ff5c00;
-    --accent2: #00d4ff;
-    --accent3: #a855f7;
-    --text: #e8e8f0;
-    --muted: #6b6b80;
-    --code-bg: #0d0d15;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  /* Grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  .container {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 60px 32px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* HEADER */
-  .hero {
-    text-align: left;
-    margin-bottom: 64px;
-    min-height: 660px;
-    border: 1px solid var(--border);
-    background: linear-gradient(135deg, #0d0d18 0%, #0a0a12 100%);
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    align-items: stretch;
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
-    gap: clamp(32px, 5vw, 64px);
-    align-items: center;
-    padding: clamp(32px, 6vw, 72px);
-  }
-
-  .hero-copy {
-    max-width: 680px;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; left: 50%; transform: translateX(-50%);
-    width: 500px; height: 300px;
-    background: radial-gradient(ellipse, rgba(255,92,0,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 50%; transform: translateX(-50%);
-    width: 400px; height: 200px;
-    background: radial-gradient(ellipse, rgba(0,212,255,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .badge {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--accent);
-    border: 1px solid rgba(255,92,0,0.3);
-    padding: 6px 16px;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(48px, 7vw, 92px);
-    font-weight: 800;
-    letter-spacing: -3px;
-    line-height: 0.9;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, #ffffff 30%, #ff5c00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .tagline {
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(17px, 2vw, 21px);
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 660px;
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .tagline strong {
-    color: var(--accent2);
-    font-weight: 500;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 32px;
-  }
-
-  .hero-panel {
-    background: linear-gradient(180deg, rgba(17,17,24,0.96), rgba(13,13,21,0.72));
-    border: 1px solid rgba(232,232,240,0.12);
-    box-shadow: 0 28px 80px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.06);
-    padding: 28px;
-    position: relative;
-  }
-
-  .hero-panel::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 0%, rgba(255,92,0,0.16), transparent 32%), radial-gradient(circle at 90% 30%, rgba(0,212,255,0.12), transparent 26%);
-    pointer-events: none;
-  }
-
-  .panel-kicker {
-    position: relative;
-    z-index: 1;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-
-  .loop-card {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 10px;
-  }
-
-  .loop-step {
-    display: grid;
-    grid-template-columns: 34px 1fr;
-    gap: 12px;
-    align-items: start;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(232,232,240,0.08);
-  }
-
-  .loop-step:last-child { border-bottom: none; }
-
-  .step-index {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border: 1px solid rgba(255,92,0,0.4);
-    color: var(--accent);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-  }
-
-  .step-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-
-  .step-copy {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  .proof-strip {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    margin-top: 28px;
-    background: rgba(232,232,240,0.08);
-    border: 1px solid rgba(232,232,240,0.08);
-  }
-
-  .proof-item {
-    background: rgba(10,10,15,0.82);
-    padding: 14px;
-  }
-
-  .proof-label {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--accent2);
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-
-  .proof-text {
-    display: block;
-    color: var(--text);
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  /* DIAMOND */
-  .diamond-section {
-    display: grid;
-    place-items: center;
-    margin: 60px 0;
-  }
-
-  .diamond-viz {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-  }
-
-  .d-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 8px 0;
-    opacity: 0;
-    animation: fadeInUp 0.5s forwards;
-  }
-
-  .d-row:nth-child(1) { animation-delay: 0.1s; }
-  .d-row:nth-child(2) { animation-delay: 0.2s; }
-  .d-row:nth-child(3) { animation-delay: 0.3s; }
-  .d-row:nth-child(4) { animation-delay: 0.4s; }
-  .d-row:nth-child(5) { animation-delay: 0.5s; }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .d-diamonds { color: var(--accent); font-size: 18px; letter-spacing: 4px; }
-  .d-label { color: var(--text); font-size: 12px; letter-spacing: 1px; }
-  .d-label span { color: var(--muted); }
-
-  /* PHASES */
-  .phase {
-    margin-bottom: 60px;
-    border-left: 2px solid var(--border);
-    padding-left: 32px;
-    position: relative;
-  }
-
-  .phase::before {
-    content: '';
-    position: absolute;
-    left: -5px; top: 8px;
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-
-  .phase-header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .phase-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-  }
-
-  h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin: 32px 0 12px;
-  }
-
-  h3::before {
-    content: '↳ ';
-    color: var(--accent2);
-  }
-
-  /* CARDS */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin: 24px 0;
-  }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 20px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .card:hover {
-    border-color: rgba(255,92,0,0.3);
-    transform: translateY(-2px);
-  }
-
-  .card-icon {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  .card-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-
-  .card-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* TABLE */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 13px;
-  }
-
-  .data-table th {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .data-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(30,30,46,0.5);
-    vertical-align: top;
-    color: var(--text);
-  }
-
-  .data-table tr:hover td {
-    background: rgba(255,92,0,0.03);
-  }
-
-  .tag {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 2px;
-    letter-spacing: 1px;
-  }
-
-  .tag-high { background: rgba(255,92,0,0.15); color: var(--accent); }
-  .tag-med { background: rgba(0,212,255,0.1); color: var(--accent2); }
-  .tag-low { background: rgba(168,85,247,0.1); color: var(--accent3); }
-
-  /* CODE BLOCK */
-  .code-block {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    padding: 24px;
-    margin: 20px 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    line-height: 1.8;
-    color: #b4b4cc;
-    overflow-x: auto;
-    white-space: pre;
-  }
-
-  .code-block .comment { color: var(--muted); }
-  .code-block .highlight { color: var(--accent); }
-  .code-block .highlight2 { color: var(--accent2); }
-  .code-block .highlight3 { color: var(--accent3); }
-
-  /* PIPELINE */
-  .pipeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 24px 0;
-  }
-
-  .pipe-step {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(30,30,46,0.5);
-  }
-
-  .pipe-step:last-child { border-bottom: none; }
-
-  .pipe-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    min-width: 28px;
-    padding-top: 2px;
-  }
-
-  .pipe-content {}
-  .pipe-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .pipe-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* CHANNELS */
-  .channels {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin: 24px 0;
-  }
-
-  .channel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 24px 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .channel::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-  }
-
-  .channel:nth-child(1)::before { background: var(--accent); }
-  .channel:nth-child(2)::before { background: var(--accent2); }
-  .channel:nth-child(3)::before { background: var(--accent3); }
-
-  .channel-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 36px;
-    font-weight: 500;
-    opacity: 0.1;
-    position: absolute;
-    top: 16px; right: 16px;
-    line-height: 1;
-  }
-
-  .channel-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .channel:nth-child(1) .channel-title { color: var(--accent); }
-  .channel:nth-child(2) .channel-title { color: var(--accent2); }
-  .channel:nth-child(3) .channel-title { color: var(--accent3); }
-
-  .channel-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* WORKFLOWS */
-  .workflows-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-    margin: 24px 0;
-  }
-
-  .workflow-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 16px;
-    transition: all 0.2s;
-  }
-
-  .workflow-card:hover {
-    border-color: rgba(0,212,255,0.3);
-    background: rgba(0,212,255,0.03);
-  }
-
-  .workflow-name {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent2);
-    margin-bottom: 6px;
-  }
-
-  .workflow-role {
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* DIGEST */
-  .digest-preview {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    padding: 24px;
-    margin: 24px 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    line-height: 2;
-  }
-
-  .digest-title {
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
-  }
-
-  .digest-item { color: var(--text); }
-  .digest-meta { color: var(--muted); }
-  .digest-score { color: var(--accent2); }
-
-  .digest-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .btn-primary { background: var(--accent); color: white; }
-  .btn-secondary { background: transparent; color: var(--muted); border: 1px solid var(--border); }
-  .btn-tertiary { background: transparent; color: var(--muted); border: 1px solid var(--border); }
-  .btn:hover { opacity: 0.8; transform: translateY(-1px); }
-
-  /* DELIVERABLES */
-  .deliverables {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 8px;
-    margin: 24px 0;
-  }
-
-  .deliverable {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 14px 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .del-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    min-width: 20px;
-    padding-top: 2px;
-  }
-
-  .del-text {
-    font-size: 12px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  /* FOOTER */
-  .footer {
-    margin-top: 80px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-  }
-
-  .footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--accent);
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-  @media (max-width: 860px) {
-    .hero { min-height: auto; }
-    .hero-inner { grid-template-columns: 1fr; }
-    .proof-strip { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 640px) {
-    .channels { grid-template-columns: 1fr; }
-    .container { padding: 32px 20px; }
-    h1 { font-size: 48px; letter-spacing: -2px; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FORGE - Software Product Foundry</title>
+  <meta name="description" content="FORGE helps turn proven market demand into shipped, documented and handover-ready software products.">
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --surface: #fffaf1;
+      --surface-strong: #111111;
+      --ink: #111111;
+      --muted: #5e5b55;
+      --faint: #918b80;
+      --line: #d8d0c2;
+      --line-strong: #111111;
+      --accent: #ff5c00;
+      --accent-soft: #ffe0cc;
+      --success: #1f7a4c;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(17,17,17,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(17,17,17,0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 72px 72px;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      color: #fff;
+      background: var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a {
+      text-decoration: none;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+      gap: clamp(40px, 6vw, 88px);
+      align-items: center;
+      min-height: calc(100dvh - 92px);
+      padding: clamp(48px, 8vw, 96px) 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 22px;
+      border: 1px solid var(--line-strong);
+      padding: 6px 10px;
+      color: var(--ink);
+      background: var(--surface);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: 0.95;
+      letter-spacing: -0.075em;
+      text-wrap: balance;
+    }
+
+    .lede {
+      max-width: 660px;
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 1px solid var(--line-strong);
+      padding: 0 18px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .note {
+      color: var(--faint);
+      font-size: 14px;
+    }
+
+    .board {
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      box-shadow: 12px 12px 0 var(--ink);
+    }
+
+    .board-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line-strong);
+      padding: 18px 20px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .board-status {
+      color: var(--success);
+    }
+
+    .board-body {
+      padding: 20px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+      border: 1px solid var(--line);
+      background: #fffdf8;
+      padding: 14px;
+    }
+
+    .flow-index {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: #fff;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .flow-title {
+      margin-bottom: 2px;
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .flow-copy {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .metric {
+      padding: 16px 20px;
+      border-right: 1px solid var(--line-strong);
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    section {
+      padding: clamp(56px, 9vw, 104px) 0;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .section-index {
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h2 {
+      max-width: 820px;
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 4vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.18rem);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 1px;
+      border: 1px solid var(--line-strong);
+      background: var(--line-strong);
+    }
+
+    .panel {
+      background: var(--surface);
+      padding: clamp(24px, 4vw, 40px);
+    }
+
+    .panel.dark {
+      color: #fff;
+      background: var(--surface-strong);
+    }
+
+    .panel-label {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel h3 {
+      margin-bottom: 14px;
+      font-size: clamp(1.4rem, 2vw, 2.1rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .panel.dark p {
+      color: #c8c3bb;
+    }
+
+    .list {
+      display: grid;
+      gap: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .list-row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .list-row b {
+      color: var(--ink);
+    }
+
+    .panel.dark .list-row b {
+      color: #fff;
+    }
+
+    .list-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .panel.dark .list-row span {
+      color: #c8c3bb;
+    }
+
+    .process {
+      display: grid;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+
+    .process-row {
+      display: grid;
+      grid-template-columns: 92px 220px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 22px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .process-row:last-child {
+      border-bottom: 0;
+    }
+
+    .process-num {
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-weight: 800;
+    }
+
+    .process-title {
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .process-copy {
+      max-width: 650px;
+      color: var(--muted);
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line-strong);
+      background: var(--line-strong);
+    }
+
+    .deliverable {
+      min-height: 180px;
+      background: var(--surface);
+      padding: 22px;
+    }
+
+    .deliverable-num {
+      display: block;
+      margin-bottom: 42px;
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .deliverable-title {
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .deliverable-copy {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: end;
+      border: 1px solid var(--line-strong);
+      background: var(--ink);
+      color: #fff;
+      padding: clamp(28px, 5vw, 56px);
+    }
+
+    .cta h2 {
+      max-width: 760px;
+      color: #fff;
+    }
+
+    .cta p {
+      max-width: 620px;
+      color: #d8d2c7;
+    }
+
+    .cta .button {
+      border-color: #fff;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 32px 0 48px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 920px) {
+      .topbar,
+      .hero,
+      .section-head,
+      .split,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .board {
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+
+      .process-row {
+        grid-template-columns: 72px 1fr;
+      }
+
+      .process-copy {
+        grid-column: 2;
+      }
+
+      .deliverables {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        background-size: 44px 44px;
+      }
+
+      .page {
+        width: min(100% - 24px, var(--max));
+      }
+
+      h1 {
+        font-size: clamp(2.75rem, 18vw, 4.4rem);
+      }
+
+      .board-head,
+      .metrics,
+      footer {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        display: grid;
+      }
+
+      .metric {
+        border-right: 0;
+        border-bottom: 1px solid var(--line-strong);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
+      .process-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .process-copy {
+        grid-column: auto;
+      }
+
+      .deliverables {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverable {
+        min-height: auto;
+      }
+
+      .deliverable-num {
+        margin-bottom: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="badge">Autonomous software foundry</div>
-        <h1>From market signal to shipped software product</h1>
-        <p class="tagline">
-          FORGE helps turn validated customer problems into <strong>software products</strong> with research,
-          design, development, launch assets and <strong>handover-ready documentation</strong>.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:joelsefanja@gmail.com?subject=FORGE%20pilot">Discuss a pilot</a>
-          <a class="btn btn-secondary" href="#process">View the process</a>
-        </div>
+  <div class="page">
+    <header class="topbar" aria-label="Site header">
+      <div class="brand">
+        <span class="brand-mark">F</span>
+        <span>FORGE</span>
       </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#why">Why</a>
+        <a href="#process">Process</a>
+        <a href="#outputs">Outputs</a>
+        <a href="mailto:joelsefanja@gmail.com?subject=FORGE%20pilot">Contact</a>
+      </nav>
+    </header>
 
-      <div class="hero-panel" aria-label="FORGE process preview">
-        <div class="panel-kicker">FORGE loop</div>
-        <div class="loop-card">
-          <div class="loop-step">
-            <span class="step-index">01</span>
-            <div>
-              <div class="step-title">Discover</div>
-              <div class="step-copy">Find customer pain with enough urgency to build for.</div>
-            </div>
-          </div>
-          <div class="loop-step">
-            <span class="step-index">02</span>
-            <div>
-              <div class="step-title">Validate</div>
-              <div class="step-copy">Check demand, alternatives, pricing signals and risk.</div>
-            </div>
-          </div>
-          <div class="loop-step">
-            <span class="step-index">03</span>
-            <div>
-              <div class="step-title">Build</div>
-              <div class="step-copy">Create the product with tests, docs and release gates.</div>
-            </div>
-          </div>
-          <div class="loop-step">
-            <span class="step-index">04</span>
-            <div>
-              <div class="step-title">Launch</div>
-              <div class="step-copy">Prepare the page, payments, support model and first release.</div>
-            </div>
-          </div>
-          <div class="loop-step">
-            <span class="step-index">05</span>
-            <div>
-              <div class="step-title">Hand over</div>
-              <div class="step-copy">Package evidence, documentation and transfer steps.</div>
-            </div>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Software product foundry</p>
+          <h1 id="hero-title">Build products from proven demand.</h1>
+          <p class="lede">FORGE helps a founder or small team find a real market problem, validate it, build the software, launch it, and prepare a clean handover package.</p>
+          <div class="actions">
+            <a class="button" href="mailto:joelsefanja@gmail.com?subject=FORGE%20pilot">Discuss a pilot</a>
+            <a class="button secondary" href="#process">See the process</a>
+            <span class="note">No loose demo. Evidence first.</span>
           </div>
         </div>
-        <div class="proof-strip" aria-label="FORGE outcomes">
-          <div class="proof-item"><span class="proof-label">Research</span><span class="proof-text">Evidence before code</span></div>
-          <div class="proof-item"><span class="proof-label">Build</span><span class="proof-text">Reviewable software</span></div>
-          <div class="proof-item"><span class="proof-label">Handover</span><span class="proof-text">Transfer-ready assets</span></div>
+
+        <aside class="board" aria-label="FORGE operating board">
+          <div class="board-head">
+            <span>Operating board</span>
+            <span class="board-status">Ready for review</span>
+          </div>
+          <div class="board-body">
+            <div class="flow">
+              <div class="flow-step">
+                <span class="flow-index">01</span>
+                <div>
+                  <div class="flow-title">Find a painful problem</div>
+                  <div class="flow-copy">Use reviews, forums, job posts and support gaps to spot demand.</div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-index">02</span>
+                <div>
+                  <div class="flow-title">Validate the product angle</div>
+                  <div class="flow-copy">Check buyers, alternatives, price signals and launch risk.</div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-index">03</span>
+                <div>
+                  <div class="flow-title">Build a usable first version</div>
+                  <div class="flow-copy">Ship core journeys with tests, docs and human release gates.</div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-index">04</span>
+                <div>
+                  <div class="flow-title">Prepare for launch or transfer</div>
+                  <div class="flow-copy">Package the story, setup, evidence and owner notes.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="metrics" aria-label="FORGE focus areas">
+            <div class="metric"><strong>01</strong><span>Market evidence</span></div>
+            <div class="metric"><strong>02</strong><span>Reviewable build</span></div>
+            <div class="metric"><strong>03</strong><span>Handover pack</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="why" aria-labelledby="why-title">
+        <div class="section-head">
+          <div class="section-index">01 / Why</div>
+          <div>
+            <h2 id="why-title">Most products fail before the first line of code.</h2>
+            <p class="section-copy">FORGE starts with demand, not a feature list. The goal is to create software that is understandable, testable and ready for someone else to run.</p>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <div class="split">
+          <div class="panel dark">
+            <div class="panel-label">Problem</div>
+            <h3>Ideas are cheap. Transferable products are not.</h3>
+            <p>A demo can look good and still be impossible to sell, support, audit or hand over. FORGE treats product evidence and owner documentation as part of the build.</p>
+          </div>
+          <div class="panel">
+            <div class="panel-label">Method</div>
+            <h3>Build only after the market signal is strong enough.</h3>
+            <div class="list">
+              <div class="list-row"><b>01</b><span>Collect repeated pain from public and commercial sources.</span></div>
+              <div class="list-row"><b>02</b><span>Reduce the scope to one first product promise.</span></div>
+              <div class="list-row"><b>03</b><span>Ship the smallest version that can be tested, used and explained.</span></div>
+              <div class="list-row"><b>04</b><span>Document decisions so the product can be operated or transferred.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" aria-labelledby="process-title">
+        <div class="section-head">
+          <div class="section-index">02 / Process</div>
+          <div>
+            <h2 id="process-title">A clear path from signal to software.</h2>
+            <p class="section-copy">Each step has a concrete output. That keeps the work readable for humans and useful for automation.</p>
+          </div>
+        </div>
+
+        <div class="process">
+          <div class="process-row">
+            <div class="process-num">01</div>
+            <div class="process-title">Discover</div>
+            <div class="process-copy">Find repeated customer pain in reviews, forums, job posts, issue trackers and niche communities.</div>
+          </div>
+          <div class="process-row">
+            <div class="process-num">02</div>
+            <div class="process-title">Validate</div>
+            <div class="process-copy">Check who pays, what they use now, what is missing and whether the first version can be narrow.</div>
+          </div>
+          <div class="process-row">
+            <div class="process-num">03</div>
+            <div class="process-title">Design</div>
+            <div class="process-copy">Turn the problem into a product brief, user journeys, acceptance criteria and technical decisions.</div>
+          </div>
+          <div class="process-row">
+            <div class="process-num">04</div>
+            <div class="process-title">Build</div>
+            <div class="process-copy">Create the first useful version with tests, accessibility checks, release notes and deployment setup.</div>
+          </div>
+          <div class="process-row">
+            <div class="process-num">05</div>
+            <div class="process-title">Launch</div>
+            <div class="process-copy">Prepare the landing page, pricing, onboarding, payment path and support model.</div>
+          </div>
+          <div class="process-row">
+            <div class="process-num">06</div>
+            <div class="process-title">Hand over</div>
+            <div class="process-copy">Package docs, risks, operating notes, credentials checklist and transfer steps.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="outputs" aria-labelledby="outputs-title">
+        <div class="section-head">
+          <div class="section-index">03 / Outputs</div>
+          <div>
+            <h2 id="outputs-title">What the foundry produces.</h2>
+            <p class="section-copy">The output is more than source code. It is a product package that can be reviewed, launched and handed over.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <div class="deliverable">
+            <span class="deliverable-num">01</span>
+            <div class="deliverable-title">Opportunity brief</div>
+            <div class="deliverable-copy">The problem, audience, proof, alternatives and first product angle.</div>
+          </div>
+          <div class="deliverable">
+            <span class="deliverable-num">02</span>
+            <div class="deliverable-title">Product scope</div>
+            <div class="deliverable-copy">User journeys, acceptance criteria, non-goals and launch constraints.</div>
+          </div>
+          <div class="deliverable">
+            <span class="deliverable-num">03</span>
+            <div class="deliverable-title">Working software</div>
+            <div class="deliverable-copy">A focused product build with tests and release checks.</div>
+          </div>
+          <div class="deliverable">
+            <span class="deliverable-num">04</span>
+            <div class="deliverable-title">Launch assets</div>
+            <div class="deliverable-copy">Landing copy, onboarding notes, pricing assumptions and payment setup.</div>
+          </div>
+          <div class="deliverable">
+            <span class="deliverable-num">05</span>
+            <div class="deliverable-title">Quality evidence</div>
+            <div class="deliverable-copy">Privacy, security, accessibility, dependency and support notes.</div>
+          </div>
+          <div class="deliverable">
+            <span class="deliverable-num">06</span>
+            <div class="deliverable-title">Handover package</div>
+            <div class="deliverable-copy">Runbook, owner notes, credentials checklist and transfer plan.</div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="fit-title">
+        <div class="section-head">
+          <div class="section-index">04 / Fit</div>
+          <div>
+            <h2 id="fit-title">For founders who want evidence before speed.</h2>
+            <p class="section-copy">FORGE is useful when the product must become understandable, operable and transferable, not just impressive in a demo.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="panel">
+            <div class="panel-label">Best fit</div>
+            <div class="list">
+              <div class="list-row"><b>01</b><span>Solo founders testing narrow software product ideas.</span></div>
+              <div class="list-row"><b>02</b><span>Agencies packaging repeatable internal tools or niche products.</span></div>
+              <div class="list-row"><b>03</b><span>Operators who need software that another owner can understand.</span></div>
+            </div>
+          </div>
+          <div class="panel dark">
+            <div class="panel-label">Not a fit</div>
+            <h3>Not for vague platform dreams.</h3>
+            <p>FORGE works best when the first product can be narrow, validated and shipped with clear ownership. Broad platforms come later, if the evidence earns them.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="cta-title">
+        <div class="cta">
+          <div>
+            <h2 id="cta-title">Bring one product idea. Leave with a buildable path.</h2>
+            <p>Start with a small pilot: opportunity brief, product scope, first build plan and the checks needed before launch.</p>
+          </div>
+          <a class="button" href="mailto:joelsefanja@gmail.com?subject=FORGE%20pilot">Discuss a pilot</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>FORGE - software product foundry</span>
+      <span>Discover / Validate / Build / Hand over</span>
+    </footer>
   </div>
-
-  <!-- DIAMOND -->
-  <div class="diamond-section">
-    <div class="diamond-viz">
-      <div class="d-row">
-        <span class="d-diamonds">◇</span>
-        <span class="d-label">Discover <span>— find a real customer problem</span></span>
-      </div>
-      <div class="d-row">
-        <span class="d-diamonds">◇ ◇</span>
-        <span class="d-label">Explore <span>— compare promising opportunities</span></span>
-      </div>
-      <div class="d-row">
-        <span class="d-diamonds">◇ ◇ ◇</span>
-        <span class="d-label">Validate <span>— check demand and constraints</span></span>
-      </div>
-      <div class="d-row">
-        <span class="d-diamonds">◇ ◇</span>
-        <span class="d-label">Choose <span>— define the product worth building</span></span>
-      </div>
-      <div class="d-row">
-        <span class="d-diamonds">◇</span>
-        <span class="d-label">Ship <span>— build, launch and hand over</span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- PHASE 1 -->
-  <div class="phase" id="process">
-    <div class="phase-header">
-      <span class="phase-num">PHASE 01</span>
-      <h2>Find proven opportunities</h2>
-    </div>
-    <p style="color:var(--muted); margin-bottom:24px;">FORGE scans markets, competitors and customer pain points to find product ideas with real demand.</p>
-
-    <h3>Signals FORGE studies</h3>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">01</div>
-        <div class="card-title">Customer complaints</div>
-        <div class="card-desc">Repeated pain in forums, reviews and support-heavy workflows.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">02</div>
-        <div class="card-title">Review gaps</div>
-        <div class="card-desc">What users dislike in existing software and what they still need.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">03</div>
-        <div class="card-title">Job requests</div>
-        <div class="card-desc">Paid work requests that show people already budget for a solution.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">04</div>
-        <div class="card-title">Market tools</div>
-        <div class="card-desc">Competing tools, pricing, missing features and positioning patterns.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">05</div>
-        <div class="card-title">Integration needs</div>
-        <div class="card-desc">Places where software must connect to payments, POS, finance or CRM.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">06</div>
-        <div class="card-title">Operational bottlenecks</div>
-        <div class="card-desc">Manual work, spreadsheet chaos and reporting gaps that slow teams down.</div>
-      </div>
-    </div>
-
-    <h3>Where evidence comes from</h3>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Signal</th>
-          <th>What it reveals</th>
-          <th>Priority</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Niche forums</td><td>Repeated complaints and workarounds</td><td><span class="tag tag-high">High</span></td></tr>
-        <tr><td>G2 and Capterra reviews</td><td>Where current B2B tools disappoint users</td><td><span class="tag tag-high">High</span></td></tr>
-        <tr><td>App marketplaces</td><td>Unmet needs in paid software categories</td><td><span class="tag tag-high">High</span></td></tr>
-        <tr><td>GitHub issues</td><td>Developer workflow gaps and repeated requests</td><td><span class="tag tag-high">High</span></td></tr>
-        <tr><td>Freelance job posts</td><td>Problems people are already willing to pay for</td><td><span class="tag tag-high">High</span></td></tr>
-        <tr><td>Question sites</td><td>Confusing tasks and underserved users</td><td><span class="tag tag-med">Medium</span></td></tr>
-        <tr><td>Launch platforms</td><td>New categories, traction and positioning</td><td><span class="tag tag-med">Medium</span></td></tr>
-        <tr><td>Social complaints</td><td>Fresh pain, urgency and wording from real users</td><td><span class="tag tag-high">High</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- PHASE 2 -->
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-num">PHASE 02</span>
-      <h2>How FORGE works</h2>
-    </div>
-
-    <h3>Ways products can create value</h3>
-    <div class="channels">
-      <div class="channel">
-        <div class="channel-num">01</div>
-        <div class="channel-title">Subscription product</div>
-        <div class="channel-desc">Customers pay monthly for a focused tool that solves a recurring problem.</div>
-      </div>
-      <div class="channel">
-        <div class="channel-num">02</div>
-        <div class="channel-title">Resellable product</div>
-        <div class="channel-desc">A product can be packaged for agencies, operators or niche entrepreneurs.</div>
-      </div>
-      <div class="channel">
-        <div class="channel-num">03</div>
-        <div class="channel-title">Product sale</div>
-        <div class="channel-desc">A built product can be prepared for buyer review with clean documents and transfer steps.</div>
-      </div>
-    </div>
-
-    <h3>From idea to launch</h3>
-    <div class="pipeline">
-      <div class="pipe-step">
-        <span class="pipe-num">01</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Define the product</div>
-          <div class="pipe-desc">Turn a market problem into a clear scope, user journeys and acceptance criteria.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">02</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Design the system</div>
-          <div class="pipe-desc">Choose the structure, interfaces and technical decisions needed for a maintainable product.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">03</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Build the software</div>
-          <div class="pipe-desc">Create the frontend, backend, API contract and product workflows in reviewable changes.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">04</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Test key journeys</div>
-          <div class="pipe-desc">Check core flows, edge cases, accessibility, security basics and release readiness.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">05</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Improve the interface</div>
-          <div class="pipe-desc">Review usability, wording, visual hierarchy and the moments where users can get stuck.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">06</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Prepare translations</div>
-          <div class="pipe-desc">Keep visible text structured so the product can support multiple markets.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">07</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Check compliance</div>
-          <div class="pipe-desc">Review privacy, accessibility, security and operational evidence before launch.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">08</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Prepare deployment</div>
-          <div class="pipe-desc">Package the product for hosting, monitoring and safe release approval.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">09</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Write handover docs</div>
-          <div class="pipe-desc">Create product notes, user guidance, API notes, runbooks and change history.</div>
-        </div>
-      </div>
-      <div class="pipe-step">
-        <span class="pipe-num">10</span>
-        <div class="pipe-content">
-          <div class="pipe-title">Prepare launch</div>
-          <div class="pipe-desc">Set up landing copy, pricing, payments, onboarding and the first customer path.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PHASE 3 -->
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-num">PHASE 03</span>
-      <h2>Opportunity review and handover</h2>
-    </div>
-
-    <h3>Opportunity shortlist</h3>
-    <div class="digest-preview">
-      <div class="digest-title">TOP 5 PRODUCT OPPORTUNITIES - [date]</div>
-      <div class="digest-item">#1 [Niche: Gym management NL]</div>
-      <div class="digest-meta">Problem: "We need affordable member management with iDEAL payments."</div>
-      <div class="digest-meta">Sources: niche forum thread, review sites and similar questions</div>
-      <div class="digest-score">Score: 8.4/10 | Estimated market: €2.3M | Why current tools fall short: price and local payments</div>
-      <div class="digest-meta">Approach: build a focused product with member records, payments and simple reporting</div>
-      <div class="digest-actions">
-        <button class="btn btn-primary">Start build</button>
-        <button class="btn btn-secondary">Save opportunity</button>
-        <button class="btn btn-tertiary">Dismiss</button>
-      </div>
-    </div>
-
-    <h3>Handover preparation</h3>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">01</div>
-        <div class="card-title">Valuation estimate</div>
-        <div class="card-desc">Summarize revenue, usage, growth, churn, product quality and operating risk.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">02</div>
-        <div class="card-title">Buyer-ready documents</div>
-        <div class="card-desc">Package financials, product notes, user metrics, codebase overview and compliance evidence.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">03</div>
-        <div class="card-title">Offer materials</div>
-        <div class="card-desc">Prepare a clear product summary, buyer questions and deal support materials.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">04</div>
-        <div class="card-title">Transfer checklist</div>
-        <div class="card-desc">Document domains, hosting, repositories, customer data rules and owner handover steps.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WORKFLOWS -->
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-num">WORKFLOWS</span>
-      <h2>Specialist workflows</h2>
-    </div>
-    <p style="color:var(--muted); margin-bottom: 20px;">FORGE coordinates focused workflows for research, product decisions, build quality, launch and handover.</p>
-    <div class="workflows-grid">
-      <div class="workflow-card"><div class="workflow-name">Market scout</div><div class="workflow-role">Finds trends, complaints and product gaps</div></div>
-      <div class="workflow-card"><div class="workflow-name">Product architect</div><div class="workflow-role">Turns scope into structure and decisions</div></div>
-      <div class="workflow-card"><div class="workflow-name">Compliance check</div><div class="workflow-role">Reviews privacy, accessibility and security evidence</div></div>
-      <div class="workflow-card"><div class="workflow-name">Growth strategy</div><div class="workflow-role">Shapes pricing, positioning and launch channels</div></div>
-      <div class="workflow-card"><div class="workflow-name">Handover strategy</div><div class="workflow-role">Prepares buyer review and transfer steps</div></div>
-      <div class="workflow-card"><div class="workflow-name">Technology review</div><div class="workflow-role">Checks packages, stack decisions and licenses</div></div>
-      <div class="workflow-card"><div class="workflow-name">Brand position</div><div class="workflow-role">Clarifies name, message and market fit</div></div>
-      <div class="workflow-card"><div class="workflow-name">Integration research</div><div class="workflow-role">Finds payment, POS, finance and CRM opportunities</div></div>
-      <div class="workflow-card"><div class="workflow-name">Risk review</div><div class="workflow-role">Checks security, dependency and operating risks</div></div>
-      <div class="workflow-card"><div class="workflow-name">Synthesis</div><div class="workflow-role">Combines findings into a clear product plan</div></div>
-    </div>
-  </div>
-
-  <!-- FIT -->
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-num">FIT</span>
-      <h2>Who FORGE helps</h2>
-    </div>
-    <p style="color:var(--muted); margin-bottom:20px;">FORGE is built for people who want software products with evidence, not loose demos.</p>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">01</div>
-        <div class="card-title">Solo founders</div>
-        <div class="card-desc">Move from scattered ideas to validated product bets and launch-ready assets.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">02</div>
-        <div class="card-title">Agencies and operators</div>
-        <div class="card-desc">Package repeatable niche software for clients, resellers or internal teams.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">03</div>
-        <div class="card-title">Product teams</div>
-        <div class="card-desc">Use a tighter discovery-to-release loop with clearer decisions and handover notes.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DELIVERABLES -->
-  <div class="phase">
-    <div class="phase-header">
-      <span class="phase-num">OUTPUT</span>
-      <h2>What FORGE produces</h2>
-    </div>
-    <div class="deliverables">
-      <div class="deliverable"><span class="del-num">01</span><div class="del-text">Market opportunity brief</div></div>
-      <div class="deliverable"><span class="del-num">02</span><div class="del-text">Product scope and user journeys</div></div>
-      <div class="deliverable"><span class="del-num">03</span><div class="del-text">Architecture notes and decisions</div></div>
-      <div class="deliverable"><span class="del-num">04</span><div class="del-text">Build plan and reviewable changes</div></div>
-      <div class="deliverable"><span class="del-num">05</span><div class="del-text">Tests for important flows</div></div>
-      <div class="deliverable"><span class="del-num">06</span><div class="del-text">Privacy, accessibility and security checklist</div></div>
-      <div class="deliverable"><span class="del-num">07</span><div class="del-text">Launch page and onboarding copy</div></div>
-      <div class="deliverable"><span class="del-num">08</span><div class="del-text">Pricing and payment setup</div></div>
-      <div class="deliverable"><span class="del-num">09</span><div class="del-text">User guide, runbook and change history</div></div>
-      <div class="deliverable"><span class="del-num">10</span><div class="del-text">Risk review and owner notes</div></div>
-      <div class="deliverable"><span class="del-num">11</span><div class="del-text">Buyer-ready handover package</div></div>
-      <div class="deliverable"><span class="del-num">12</span><div class="del-text">Opportunity review workflow</div></div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <span class="footer-logo">FORGE</span>
-    <span>AI-assisted software product foundry</span>
-    <span>Discover → Validate → Build → Hand over</span>
-  </div>
-
-</div>
 </body>
 </html>
