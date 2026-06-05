@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img" aria-labelledby="title desc">
+  <title id="title">FORGE webpage preview</title>
+  <desc id="desc">A warm retro webpage mockup with the FORGE logo, build-readiness headline and three signal cards.</desc>
+  <defs>
+    <pattern id="paper-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0v28" fill="none" stroke="#eadfce" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="10" dy="10" stdDeviation="0" flood-color="#c7773e"/>
+    </filter>
+  </defs>
+  <rect width="760" height="430" rx="20" fill="#f6f1e8"/>
+  <rect width="760" height="430" rx="20" fill="url(#paper-grid)"/>
+  <g filter="url(#shadow)">
+    <rect x="52" y="46" width="656" height="326" rx="12" fill="#fffaf1" stroke="#211d18" stroke-width="3"/>
+    <path d="M52 98h656" stroke="#211d18" stroke-width="3"/>
+    <circle cx="84" cy="72" r="8" fill="#ff5c00"/>
+    <circle cx="112" cy="72" r="8" fill="#ffd166" stroke="#211d18" stroke-width="2"/>
+    <circle cx="140" cy="72" r="8" fill="#fffaf1" stroke="#211d18" stroke-width="2"/>
+    <g transform="translate(582 61)">
+      <rect x="4" y="4" width="35" height="35" fill="#ff5c00"/>
+      <rect width="35" height="35" fill="#211d18"/>
+      <text x="17.5" y="24" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="17" font-weight="700" fill="#fffaf1">F</text>
+      <text x="50" y="24" font-family="Space Grotesk, Arial, sans-serif" font-size="18" font-weight="700" fill="#211d18">FORGE</text>
+    </g>
+    <text x="86" y="151" font-family="ui-monospace, Consolas, monospace" font-size="14" font-weight="700" letter-spacing="3" fill="#ff5c00">BUILD-READINESS</text>
+    <text x="86" y="196" font-family="Space Grotesk, Arial, sans-serif" font-size="42" font-weight="700" fill="#211d18">Evidence before build.</text>
+    <text x="86" y="232" font-family="Atkinson Hyperlegible, Arial, sans-serif" font-size="20" fill="#5e5b55">Map the signal, narrow the first scope, then choose build, narrow or stop.</text>
+    <g font-family="Atkinson Hyperlegible, Arial, sans-serif">
+      <rect x="86" y="274" width="168" height="62" rx="10" fill="#ffd166" stroke="#211d18" stroke-width="2"/>
+      <text x="108" y="301" font-size="14" font-weight="700" fill="#211d18">Signal map</text>
+      <text x="108" y="322" font-size="13" fill="#5e5b55">What is proven</text>
+      <rect x="286" y="274" width="168" height="62" rx="10" fill="#fff0dc" stroke="#211d18" stroke-width="2"/>
+      <text x="308" y="301" font-size="14" font-weight="700" fill="#211d18">First scope</text>
+      <text x="308" y="322" font-size="13" fill="#5e5b55">Smallest version</text>
+      <rect x="486" y="274" width="168" height="62" rx="10" fill="#ffe0cc" stroke="#211d18" stroke-width="2"/>
+      <text x="508" y="301" font-size="14" font-weight="700" fill="#211d18">Stop/go</text>
+      <text x="508" y="322" font-size="13" fill="#5e5b55">Decision path</text>
+    </g>
+  </g>
+</svg>

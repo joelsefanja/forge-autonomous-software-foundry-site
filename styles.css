@@ -76,7 +76,6 @@ h3 {
   align-items: center;
   gap: 1.5rem;
   padding: 1.25rem 0;
-  border-bottom: 1px solid #211d18;
 }
 
 .hero {
@@ -92,15 +91,15 @@ h3 {
 }
 
 .section {
-  padding: clamp(3.5rem, 9vw, 6.5rem) 0;
-  border-top: 1px solid #211d18;
+  padding: clamp(2.5rem, 7vw, 5.25rem) 0;
+  border-top: 0;
 }
 .section > .head {
   display: grid;
   grid-template-columns: 10rem minmax(0, 1fr);
   gap: 2rem;
   align-items: start;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.75rem;
 }
 .section .index {
   width: fit-content;
@@ -125,9 +124,10 @@ h3 {
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 1px;
+  gap: 1rem;
   border: 1px solid #211d18;
-  background: #d8d0c2;
+  background: #fffaf1;
+  padding: 1rem;
 }
 
 .footer {
@@ -140,7 +140,7 @@ h3 {
 }
 
 .section:last-of-type {
-  padding-top: calc(clamp(3.5rem, 9vw, 6.5rem) + 1.5rem);
+  padding-top: clamp(2.5rem, 7vw, 5.25rem);
 }
 
 .brand {
@@ -208,14 +208,13 @@ h3 {
 
 .situations {
   display: grid;
+  gap: 0.5rem;
   max-width: 39rem;
   margin-bottom: 1.5rem;
-  border-top: 1px solid #d8d0c2;
 }
 .situations span {
   position: relative;
-  padding: 0.5rem 0 0.5rem 1.5rem;
-  border-bottom: 1px solid #d8d0c2;
+  padding: 0 0 0 1.5rem;
   color: #211d18;
   font-size: 1rem;
   font-weight: 700;
@@ -300,7 +299,7 @@ h3 {
   color: #1f7a4c;
 }
 .board .body {
-  padding: 1rem;
+  padding: 1rem 1rem 0.75rem;
 }
 
 .flow {
@@ -349,14 +348,13 @@ h3 {
 .metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid #211d18;
+  gap: 1px;
+  padding: 0 1rem 1rem;
 }
 .metrics .metric {
-  padding: 0.75rem 1rem;
-  border-right: 1px solid #211d18;
-}
-.metrics .metric:last-child {
-  border-right: 0;
+  border: 1px solid #d8d0c2;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
 }
 .metrics .metric strong {
   display: block;
@@ -371,6 +369,17 @@ h3 {
   line-height: 1.25;
 }
 
+.web-preview {
+  margin: 0.75rem 0 0;
+}
+.web-preview img {
+  display: block;
+  width: 100%;
+  border: 1px solid #d8d0c2;
+  border-radius: 0.625rem;
+  background: #f6f1e8;
+}
+
 .panel {
   background: #fffaf1;
   padding: clamp(1.5rem, 4vw, 2.5rem);
@@ -378,8 +387,6 @@ h3 {
 .panel.inverse {
   color: #211d18;
   background-color: #fff0dc;
-  background-image: radial-gradient(circle at 0.125rem 0.125rem, rgba(33, 29, 24, 0.12) 0.0625rem, transparent 0.0875rem), repeating-linear-gradient(135deg, rgba(255, 92, 0, 0.11) 0 0.0625rem, transparent 0.0625rem 0.75rem);
-  background-size: 0.875rem 0.875rem, 1.5rem 1.5rem;
 }
 .panel.inverse p,
 .panel.inverse .row span {
@@ -408,16 +415,14 @@ h3 {
 
 .list {
   display: grid;
-  gap: 0;
-  margin-top: 1.5rem;
-  border-top: 1px solid #d8d0c2;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
 }
 .list .row {
   display: grid;
   grid-template-columns: 2.625rem 1fr;
   gap: 1rem;
-  padding: 1.125rem 0;
-  border-bottom: 1px solid #d8d0c2;
+  padding: 0;
 }
 .list .row b {
   color: #211d18;
@@ -438,8 +443,8 @@ h3 {
   grid-template-columns: 5.75rem 13.75rem 1fr;
   gap: 1.5rem;
   align-items: start;
-  padding: 1.375rem;
-  border-bottom: 1px solid #211d18;
+  padding: 1.25rem;
+  border-bottom: 1px solid #d8d0c2;
   transition: background-color 160ms ease;
 }
 .process .row:hover {
@@ -467,14 +472,17 @@ h3 {
 .deliverables {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
+  gap: 1rem;
   border: 1px solid #211d18;
-  background: #d8d0c2;
+  background: #fffaf1;
+  padding: 1rem;
 }
 .deliverables .item {
-  min-height: 11.25rem;
+  min-height: 10.5rem;
   background: #fffaf1;
-  padding: 1.5rem;
+  border: 1px solid #d8d0c2;
+  border-radius: 0.625rem;
+  padding: 1.25rem;
   transition: transform 160ms ease, background-color 160ms ease;
 }
 .deliverables .item:nth-child(2n) {
@@ -507,13 +515,16 @@ h3 {
 .faq {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
+  gap: 1rem;
   border: 1px solid #211d18;
-  background: #d8d0c2;
+  background: #fffaf1;
+  padding: 1rem;
 }
 .faq .item {
+  border: 1px solid #d8d0c2;
+  border-radius: 0.625rem;
   background: #fffaf1;
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 .faq .question {
   margin-bottom: 0.5rem;
@@ -601,7 +612,7 @@ h3 {
     width: min(100% - 1.5rem, 73.75rem);
   }
   .section {
-    padding: clamp(3.5rem, 12vw, 4.5rem) 0;
+    padding: clamp(2.5rem, 10vw, 3.5rem) 0;
   }
   h1 {
     font-size: clamp(2.45rem, 12vw, 3.35rem);
@@ -625,11 +636,7 @@ h3 {
     grid-template-columns: 1fr;
   }
   .metrics .metric {
-    border-right: 0;
-    border-bottom: 1px solid #211d18;
-  }
-  .metrics .metric:last-child {
-    border-bottom: 0;
+    border: 1px solid #d8d0c2;
   }
   .process .row {
     grid-template-columns: 2.75rem 1fr;

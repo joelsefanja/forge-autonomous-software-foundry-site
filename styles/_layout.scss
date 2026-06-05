@@ -11,7 +11,6 @@
   align-items: center;
   gap: t.$space-6;
   padding: t.$space-5 0;
-  border-bottom: t.$border;
 }
 
 .hero {
@@ -29,14 +28,14 @@
 
 .section {
   padding: t.$section-pad 0;
-  border-top: t.$border;
+  border-top: 0;
 
   > .head {
     display: grid;
     grid-template-columns: t.$section-index-column minmax(0, 1fr);
     gap: t.$space-8;
     align-items: start;
-    margin-bottom: calc(t.$space-8 + t.$space-1);
+    margin-bottom: t.$space-7;
   }
 
   .index {
@@ -64,9 +63,10 @@
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: t.$line-unit;
+  gap: t.$space-4;
   border: t.$border;
-  background: t.$color-line;
+  background: t.$color-surface;
+  padding: t.$space-4;
 }
 
 .footer {
@@ -79,5 +79,5 @@
 }
 
 .section:last-of-type {
-  padding-top: calc(t.$section-pad + t.$space-6);
+  padding-top: t.$section-pad;
 }

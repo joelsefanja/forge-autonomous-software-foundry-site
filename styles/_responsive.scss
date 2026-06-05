@@ -83,12 +83,7 @@
 
   .metrics {
     .metric {
-      border-right: 0;
-      border-bottom: t.$border;
-
-      &:last-child {
-        border-bottom: 0;
-      }
+      border: t.$soft-border;
     }
   }
 
