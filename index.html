@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FORGE Autonomous Software Foundry</title>
+  <meta name="description" content="FORGE is an autonomous software foundry for traceable product discovery, delivery, validation and handover.">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f2ea;
+      --panel: rgba(255, 255, 255, 0.76);
+      --ink: #111827;
+      --muted: #566170;
+      --line: rgba(17, 24, 39, 0.16);
+      --accent: #ff5c00;
+      --accent-2: #0ea5e9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 92, 0, 0.18), transparent 34rem),
+        radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.16), transparent 28rem),
+        linear-gradient(135deg, var(--bg), #eef4ff);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 80px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      align-items: end;
+      min-height: 72vh;
+    }
+
+    .panel,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .panel { padding: clamp(28px, 6vw, 64px); }
+    .card { padding: 24px; }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin: 0 0 24px;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      letter-spacing: -0.035em;
+    }
+
+    p { color: var(--muted); }
+
+    .lede {
+      max-width: 66ch;
+      margin: 0;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-radius: 999px;
+      padding: 0 18px;
+      color: #fff;
+      background: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    a.button.secondary {
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: transparent;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+    }
+
+    .flow span {
+      display: block;
+      border-left: 3px solid var(--accent-2);
+      padding-left: 12px;
+    }
+
+    footer {
+      margin-top: 56px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --panel: rgba(17, 24, 39, 0.78);
+        --ink: #f9fafb;
+        --muted: #cbd5e1;
+        --line: rgba(255, 255, 255, 0.14);
+        --accent: #ffb86b;
+      }
+
+      a.button { color: #111827; background: #f9fafb; }
+      a.button.secondary { color: #f9fafb; background: transparent; }
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="panel">
+        <p class="eyebrow">Autonomous Software Foundry</p>
+        <h1 id="title">FORGE</h1>
+        <p class="lede">FORGE turns validated product opportunities into traceable software assets with specs, implementation, tests, documentation, compliance evidence and human release gates.</p>
+        <div class="actions">
+          <a class="button" href="mailto:joelsefanja@gmail.com?subject=FORGE%20pilot">Discuss a pilot</a>
+          <a class="button secondary" href="#loop">See the loop</a>
+        </div>
+      </div>
+
+      <aside class="stack" aria-label="FORGE principles">
+        <div class="card">
+          <span class="tag">Traceable delivery</span>
+          <h2>Not prompt-to-demo</h2>
+          <p>FORGE is designed around product evidence, acceptance criteria, validation and handover.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Human-controlled autonomy</span>
+          <h2>AI handles the work, humans approve the risk</h2>
+          <p>Agents can plan, implement and test, while releases, payments and sensitive actions stay gated.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="loop" class="grid" aria-label="Product loop">
+      <div class="card">
+        <h2>Discover</h2>
+        <p>Start from pain evidence, buyer fit and product scope before writing code.</p>
+      </div>
+      <div class="card">
+        <h2>Build</h2>
+        <p>Use specs, issues, agents, branches and validation gates to create reviewable changes.</p>
+      </div>
+      <div class="card">
+        <h2>Handover</h2>
+        <p>Produce docs, audit evidence, release notes and transfer-ready software assets.</p>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Core loop</h2>
+      <div class="flow" aria-label="FORGE core loop">
+        <span>problem signal</span>
+        <span>product brief</span>
+        <span>specification and issue</span>
+        <span>agent implementation</span>
+        <span>tests, preview and audit</span>
+        <span>human release decision</span>
+      </div>
+    </section>
+
+    <footer>
+      Public landing page only. Source code, internal agents and implementation details are kept private.
+    </footer>
+  </main>
+</body>
+</html>
