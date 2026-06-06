@@ -1,7 +1,6 @@
-import { animate, hover, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.40.0/+esm';
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let activeScrollAnimation;
+let motion;
 
 const focusSection = (target) => {
   const previousTabIndex = target.getAttribute('tabindex');
@@ -25,21 +24,21 @@ const moveToAnchor = async (link, target, href) => {
     activeScrollAnimation.stop();
   }
 
-  if (prefersReducedMotion) {
-    window.scrollTo(0, getTargetY(target));
+  if (prefersReducedMotion || !motion?.animate) {
+    window.scrollTo({ top: getTargetY(target), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     window.history.pushState(null, '', href);
     focusSection(target);
     return;
   }
 
-  await animate(link, { y: [0, 4, -2, 0] }, { duration: 0.24, easing: [0.22, 1, 0.36, 1] }).finished;
+  await motion.animate(link, { y: [0, 4, -2, 0] }, { duration: 0.24, easing: [0.22, 1, 0.36, 1] }).finished;
 
   const startY = window.scrollY;
   const targetY = getTargetY(target);
   const distance = Math.abs(targetY - startY);
   const duration = Math.min(1.05, Math.max(0.62, distance / 5600));
 
-  activeScrollAnimation = animate(startY, targetY, {
+  activeScrollAnimation = motion.animate(startY, targetY, {
     duration,
     easing: [0.22, 1, 0.36, 1],
     onUpdate: (latest) => window.scrollTo(0, latest),
@@ -133,6 +132,7 @@ const updateList = (element, items, tagName = 'li') => {
 if (precheckForm) {
   const noneProof = precheckForm.querySelector('input[name="proof"][data-none]');
   const proofInputs = [...precheckForm.querySelectorAll('input[name="proof"]')];
+  const resultMail = document.querySelector('[data-result-mail]');
 
   proofInputs.forEach((input) => {
     input.addEventListener('change', () => {
@@ -182,8 +182,8 @@ if (precheckForm) {
     updateList(document.querySelector('[data-result-strong]'), strongSignals);
     updateList(document.querySelector('[data-result-next]'), nextChecks);
 
-    if (!prefersReducedMotion) {
-      animate(
+    if (!prefersReducedMotion && motion?.animate) {
+      motion.animate(
         '.precheck-result',
         { x: [10, 0], opacity: [0.88, 1], scale: [0.985, 1] },
         { duration: 0.38, easing: [0.22, 1, 0.36, 1] },
@@ -206,11 +206,18 @@ if (precheckForm) {
       'What version 1 must do:',
     ].join('\n');
 
-    document.querySelector('[data-result-mail]').href = `mailto:?subject=${encodeURIComponent(`FORGE idea precheck: ${title}`)}&body=${encodeURIComponent(body)}`;
+    if (resultMail) {
+      resultMail.href = `mailto:?subject=${encodeURIComponent(`FORGE idea precheck: ${title}`)}&body=${encodeURIComponent(body)}`;
+      resultMail.hidden = false;
+    }
   });
 }
 
-if (!prefersReducedMotion) {
+const setupMotionEnhancements = ({ animate, hover, inView, stagger }) => {
+  if (prefersReducedMotion) {
+    return;
+  }
+
   animate(
     '.hero .copy > *, .board',
     { opacity: [0, 1], y: [10, 0] },
@@ -226,19 +233,24 @@ if (!prefersReducedMotion) {
       { margin: '0px 0px -12% 0px' },
     );
   });
-}
 
-document.querySelectorAll('.button, .nav-action').forEach((element) => {
-  hover(element, () => {
-    if (prefersReducedMotion) {
-      return;
-    }
+  document.querySelectorAll('.button, .nav-action').forEach((element) => {
+    hover(element, () => {
+      const animation = animate(element, { y: -2 }, { duration: 0.16, easing: 'ease-out' });
 
-    const animation = animate(element, { y: -2 }, { duration: 0.16, easing: 'ease-out' });
-
-    return () => {
-      animation.stop();
-      animate(element, { y: 0 }, { duration: 0.18, easing: 'ease-out' });
-    };
+      return () => {
+        animation.stop();
+        animate(element, { y: 0 }, { duration: 0.18, easing: 'ease-out' });
+      };
+    });
   });
-});
+};
+
+import('https://cdn.jsdelivr.net/npm/motion@12.40.0/+esm')
+  .then((module) => {
+    motion = module;
+    setupMotionEnhancements(module);
+  })
+  .catch(() => {
+    motion = undefined;
+  });
