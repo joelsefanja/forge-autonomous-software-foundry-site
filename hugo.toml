@@ -1,0 +1,16 @@
+baseURL = "https://joelsefanja.github.io/forge-website/"
+locale = "en-US"
+title = "FORGE - Software Product Foundry"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  description = "FORGE turns proven market demand into governed, audited and handover-ready software products."
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]

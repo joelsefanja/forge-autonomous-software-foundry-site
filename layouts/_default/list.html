@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | FORGE</title>
+  <meta name="description" content="{{ .Params.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar" aria-label="Site header">
+      <div class="brand">
+        <span class="mark">F</span>
+        <span>FORGE</span>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+    </header>
+
+    <main class="docs-content">
+      <div class="docs-sidebar">
+        <nav aria-label="Documentation sections">
+          <ul>
+            <li><a href="/docs/">Overview</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="docs-body">
+        {{ .Content }}
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span>FORGE - software product foundry</span>
+      <span>Discover / Validate / Build / Hand over</span>
+    </footer>
+  </div>
+</body>
+</html>

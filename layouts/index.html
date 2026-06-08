@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FORGE - Software Product Foundry</title>
-  <meta name="description" content="FORGE turns proven market demand into governed, audited and handover-ready software products.">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.description }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="page">
@@ -17,11 +17,11 @@
         <span class="mark">F</span>
         <span>FORGE</span>
       </div>
-
       <nav class="nav" aria-label="Main navigation">
         <a href="#how">How it works</a>
         <a href="#outputs">What you get</a>
         <a href="#fit">Fit</a>
+        <a href="/docs/">Docs</a>
         <a class="nav-action" href="#precheck">Start check</a>
       </nav>
     </header>
@@ -58,7 +58,6 @@
                   <div class="text">You bring the customer problem, workaround and signs people care.</div>
                 </div>
               </div>
-
               <div class="step">
                 <span class="index">02</span>
                 <div>
@@ -66,16 +65,14 @@
                   <div class="text">We decide the first buyer, main workflow, risks and what version 1 includes.</div>
                 </div>
               </div>
-
               <div class="step">
                 <span class="index">03</span>
                 <div>
-              <div class="title">Leave with evidence</div>
-              <div class="text">You get a clear recommendation plus the audit trail needed to continue safely.</div>
+                  <div class="title">Leave with evidence</div>
+                  <div class="text">You get a clear recommendation plus the audit trail needed to continue safely.</div>
                 </div>
               </div>
             </div>
-
           </div>
 
           <div class="metrics" aria-label="FORGE focus areas">
@@ -185,31 +182,26 @@
             <div class="title">Proof summary</div>
             <div class="text">What customers have shown, what is still weak and what would make this worth building.</div>
           </div>
-
           <div class="item">
             <span class="num">02</span>
             <div class="title">Version one plan</div>
             <div class="text">The smallest workflow that can create value for one buyer and one urgent job.</div>
           </div>
-
           <div class="item">
             <span class="num">03</span>
             <div class="title">Reuse or build path</div>
             <div class="text">Whether to use an existing tool, integrate an API, configure a workflow or build a focused version.</div>
           </div>
-
           <div class="item">
             <span class="num">04</span>
             <div class="title">Clear recommendation</div>
             <div class="text">A concrete answer: build it, reuse something, make it smaller, collect more proof or stop.</div>
           </div>
-
           <div class="item">
             <span class="num">05</span>
             <div class="title">Review package</div>
             <div class="text">A product path you can review with a founder, operator, technical team or buyer.</div>
           </div>
-
           <div class="item">
             <span class="num">06</span>
             <div class="title">Next-step estimate</div>
@@ -233,7 +225,6 @@
             <h3>A good-looking demo is not a product.</h3>
             <p>A demo can look good and still be impossible to sell, support, audit or hand over. FORGE treats demand proof, quality checks and owner documentation as part of the product.</p>
           </div>
-
           <div class="panel">
             <div class="label">Method</div>
             <h3>Every step asks whether to build, simplify or stop.</h3>
@@ -262,31 +253,26 @@
               <div class="title">Find the pain</div>
               <div class="text">Find repeated customer pain in reviews, forums, job posts, issue trackers, support gaps, niche communities and existing product workflows.</div>
           </div>
-
           <div class="row">
             <div class="num">02</div>
             <div class="title">Check the buyer</div>
             <div class="text">Check who pays, what they use now, what is missing, what risks exist and whether the first version can stay narrow.</div>
           </div>
-
           <div class="row">
             <div class="num">03</div>
               <div class="title">Capture the workflow</div>
               <div class="text">Record discovery flows, screenshots, videos, raw HTML/text and optional llms.txt context while respecting robots.txt by default.</div>
           </div>
-
           <div class="row">
             <div class="num">04</div>
               <div class="title">Ship the reviewable product</div>
               <div class="text">Create the first useful version with tests, UI audit evidence, accessibility checks, security review, release notes and deployment setup.</div>
           </div>
-
           <div class="row">
             <div class="num">05</div>
               <div class="title">Prepare go-to-market</div>
               <div class="text">Prepare the landing page, pricing, onboarding, payment path, follow-up automations and support model.</div>
           </div>
-
           <div class="row">
             <div class="num">06</div>
             <div class="title">Transfer ownership</div>
@@ -310,37 +296,31 @@
             <div class="title">Opportunity brief</div>
             <div class="text">Customer problem, target buyer, evidence sources, current alternatives, competitors and product angle.</div>
           </div>
-
           <div class="item">
             <span class="num">02</span>
             <div class="title">Decision report</div>
             <div class="text">Buyer assumptions, pricing clues, launch risks, must-have features and a build, reuse, simplify or stop recommendation.</div>
           </div>
-
           <div class="item">
             <span class="num">03</span>
             <div class="title">Version-one plan</div>
             <div class="text">User journeys, acceptance criteria, non-goals, technical choices and release constraints.</div>
           </div>
-
           <div class="item">
             <span class="num">04</span>
               <div class="title">Working software</div>
               <div class="text">A focused product build with core workflows, tests, design tokens, reusable UI foundations and deployment setup.</div>
           </div>
-
           <div class="item">
             <span class="num">05</span>
             <div class="title">Launch package</div>
             <div class="text">Landing copy, onboarding flow, pricing assumptions, payment path, analytics plan and support notes.</div>
           </div>
-
           <div class="item">
             <span class="num">06</span>
               <div class="title">Governance and audit evidence</div>
               <div class="text">UI audit, screenshots, video walkthroughs, accessibility, security, privacy, dependency and release-readiness notes.</div>
           </div>
-
           <div class="item">
             <span class="num">07</span>
             <div class="title">Handover package</div>
@@ -368,7 +348,6 @@
               <div class="row"><b>04</b> <span>Product buyers who need proof, risks and handover context before approving a build.</span></div>
             </div>
           </div>
-
           <div class="panel inverse">
             <div class="label">Not a fit</div>
             <h3>Not for broad platform bets.</h3>
@@ -414,7 +393,7 @@
           </div>
           <div class="actions">
             <a class="button" href="mailto:?subject=FORGE%20should%20we%20build%20this%20check&body=Customer%20problem:%0AWho%20has%20it:%0ACurrent%20workaround:%0ABudget%20or%20urgency%20clue:%0AWhat%20version%201%20must%20do:%0AWho%20should%20own%20it%20afterwards:%0A">Send FORGE the problem</a>
-            <a class="button secondary" href="#outputs">Review what you get first</a>
+            <a class="button secondary" href="/docs/">Read the docs</a>
           </div>
         </div>
       </section>
@@ -425,6 +404,6 @@
       <span>Discover / Validate / Build / Hand over</span>
     </footer>
   </div>
-  <script type="module" src="app.js"></script>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>
