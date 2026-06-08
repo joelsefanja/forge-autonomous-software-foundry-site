@@ -1,0 +1,6 @@
+{{- $dest := .Destination -}}
+{{- $isExternal := or (hasPrefix $dest "http") (hasPrefix $dest "#") (hasPrefix $dest "mailto:") -}}
+{{- if not $isExternal -}}
+  {{- $dest = strings.TrimSuffix ".md" $dest -}}
+{{- end -}}
+<a href="{{ $dest | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>

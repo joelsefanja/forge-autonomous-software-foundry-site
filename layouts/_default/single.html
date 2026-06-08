@@ -18,7 +18,7 @@
         <span>FORGE</span>
       </div>
       <nav class="nav" aria-label="Main navigation">
-        <a href="{{ "/" | relURL }}">Home</a>
+        <a href="{{ "" | relURL }}">Home</a>
         <a href="{{ "docs/" | relURL }}">Docs</a>
       </nav>
     </header>
@@ -26,9 +26,25 @@
     <main class="docs-content">
       <div class="docs-sidebar">
         <nav aria-label="Documentation sections">
-          <ul>
-            <li><a href="{{ "docs/" | relURL }}">Overview</a></li>
-          </ul>
+          {{ $currentPage := . }}
+          {{ $docsSection := .Site.GetPage "/docs" }}
+          {{ if $docsSection }}
+            <ul>
+              <li><a href="{{ "docs/" | relURL }}"{{ if eq $currentPage.RelPermalink $docsSection.RelPermalink }} class="active"{{ end }}>Overview</a></li>
+              {{ range $docsSection.Sections.ByTitle }}
+                <li>
+                  <a href="{{ .RelPermalink }}"{{ if eq $currentPage.CurrentSection.RelPermalink .RelPermalink }} class="active"{{ end }}>{{ .Title }}</a>
+                  {{ if .Pages }}
+                    <ul>
+                      {{ range .Pages.ByLinkTitle }}
+                        <li><a href="{{ .RelPermalink }}"{{ if eq $currentPage.RelPermalink .RelPermalink }} class="active"{{ end }}>{{ .Title }}</a></li>
+                      {{ end }}
+                    </ul>
+                  {{ end }}
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
         </nav>
       </div>
       <div class="docs-body">
